@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject PointText;
     [SerializeField] private GameObject AwesomeText;
-
+    [SerializeField] private GameObject JoyStick;
 
 
 
