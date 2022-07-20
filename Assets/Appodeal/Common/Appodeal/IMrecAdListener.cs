@@ -11,6 +11,7 @@ namespace AppodealAds.Unity.Common
         void onMrecLoaded(bool isPrecache);
         void onMrecFailedToLoad();
         void onMrecShown();
+        void onMrecShowFailed();
         void onMrecClicked();
         void onMrecExpired();
     }

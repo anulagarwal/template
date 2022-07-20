@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using UnityEngine;
+using ConsentManager;
 using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
-using ConsentManager;
-using UnityEngine;
 
 namespace AppodealAds.Unity.Dummy
 {
@@ -10,11 +11,11 @@ namespace AppodealAds.Unity.Dummy
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class DummyClient : IAppodealAdsClient
     {
-        #region Appodeal
+        public void initialize(string appKey, int adTypes, IAppodealInitializationListener listener)
+        {
+            Debug.Log("Call to Appodeal.initialize on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
 
-        
-
-        
         public void initialize(string appKey, int adTypes)
         {
             Debug.Log("Call to Appodeal.initialize on not supported platform. To test advertising, install your application on the Android/iOS device.");
@@ -102,14 +103,15 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.setSmartBanners on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
+        public bool isSmartBannersEnabled()
+        {
+             Debug.Log("Call to Appodeal.isSmartBannersEnabled on not supported platform. To test advertising, install your application on the Android/iOS device.");
+             return false;
+        }
+
         public void setBannerAnimation(bool value)
         {
             Debug.Log("Call to Appodeal.setBannerAnimation on not supported platform. To test advertising, install your application on the Android/iOS device.");
-        }
-
-        public void setBannerBackground(bool value)
-        {
-            Debug.Log("Call to Appodeal.setBannerBackground on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
         public void setTabletBanners(bool value)
@@ -147,6 +149,16 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.updateConsent on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
+        public void updateGdprConsent(Appodeal.GdprUserConsent consent)
+        {
+            Debug.Log("Call to Appodeal.updateGdprConsent on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
+        public void updateCcpaConsent(Appodeal.CcpaUserConsent consent)
+        {
+            Debug.Log("Call to Appodeal.updateCcpaConsent on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
         public void disableNetwork(string network)
         {
             Debug.Log("Call to Appodeal.disableNetwork on not supported platform. To test advertising, install your application on the Android/iOS device.");
@@ -182,6 +194,12 @@ namespace AppodealAds.Unity.Dummy
             return Appodeal.APPODEAL_PLUGIN_VERSION;
         }
 
+        public long getSegmentId()
+        {
+            Debug.Log("Call to Appodeal.getSegmentId on not supported platform. To test advertising, install your application on the Android/iOS device.");
+            return -1;
+        }
+
         public bool canShow(int adTypes)
         {
             Debug.Log("Call to Appodeal.canShow on not supported platform. To test advertising, install your application on the Android/iOS device.");
@@ -192,26 +210,6 @@ namespace AppodealAds.Unity.Dummy
         {
             Debug.Log("Call to Appodeal.canShow on not supported platform. To test advertising, install your application on the Android/iOS device.");
             return false;
-        }
-
-        public void setSegmentFilter(string name, bool value)
-        {
-            Debug.Log("Call to Appodeal.setSegmentFilter on not supported platform. To test advertising, install your application on the Android/iOS device.");
-        }
-
-        public void setSegmentFilter(string name, int value)
-        {
-            Debug.Log("Call to Appodeal.setSegmentFilter on not supported platform. To test advertising, install your application on the Android/iOS device.");
-        }
-
-        public void setSegmentFilter(string name, double value)
-        {
-            Debug.Log("Call to Appodeal.setSegmentFilter on not supported platform. To test advertising, install your application on the Android/iOS device.");
-        }
-
-        public void setSegmentFilter(string name, string value)
-        {
-            Debug.Log("Call to Appodeal.setSegmentFilter on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
         public void setCustomFilter(string name, bool value)
@@ -234,9 +232,20 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.setCustomFilter on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
+        public void resetCustomFilter(string name)
+        {
+            Debug.Log("Call to Appodeal.resetCustomFilter on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
         public void trackInAppPurchase(double amount, string currency)
         {
             Debug.Log("Call to Appodeal.trackInAppPurchase on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
+        public List<string> getNetworks(int adTypes)
+        {
+            Debug.Log("Call to Appodeal.getNetworks on not supported platform. To test advertising, install your application on the Android/iOS device.");
+            return null;;
         }
 
         public string getRewardCurrency(string placement)
@@ -289,14 +298,14 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.setExtraData(string key, string value) on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
+        public void resetExtraData(string key)
+        {
+            Debug.Log("Call to Appodeal.resetExtraData(string key) on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
         public void setInterstitialCallbacks(IInterstitialAdListener listener)
         {
             Debug.Log("Call to Appodeal.setInterstitialCallbacks on not supported platform. To test advertising, install your application on the Android/iOS device.");
-        }
-
-        public void setNonSkippableVideoCallbacks(INonSkippableVideoAdListener listener)
-        {
-            Debug.Log("Call to Appodeal.setNonSkippableVideoCallbacks on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
         public void setRewardedVideoCallbacks(IRewardedVideoAdListener listener)
@@ -334,18 +343,16 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.isAutoCacheEnabled on not supported platform. To test advertising, install your application on the Android/iOS device.");
             return false;
         }
-        
-        #endregion
-
-        #region User settings
-
-        public void getUserSettings()
-        {
-        }
 
         public void setUserId(string id)
         {
             Debug.Log("Call to Appodeal.setUserId on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
+        public string getUserId()
+        {
+            Debug.Log("Call to Appodeal.getUserId on not supported platform. To test advertising, install your application on the Android/iOS device.");
+            return string.Empty;
         }
 
         public void setUserAge(int age)
@@ -358,6 +365,19 @@ namespace AppodealAds.Unity.Dummy
             Debug.Log("Call to Appodeal.setGender on not supported platform. To test advertising, install your application on the Android/iOS device.");
         }
 
-        #endregion
+        public void logEvent(string eventName, Dictionary<string, object> eventParams)
+        {
+            Debug.Log("Call to Appodeal.logEvent on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
+        public void validatePlayStoreInAppPurchase(IPlayStoreInAppPurchase purchase, IInAppPurchaseValidationListener listener)
+        {
+            Debug.Log("Call to Appodeal.validatePlayStoreInAppPurchase on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
+
+        public void validateAppStoreInAppPurchase(IAppStoreInAppPurchase purchase, IInAppPurchaseValidationListener listener)
+        {
+            Debug.Log("Call to Appodeal.validateAppStoreInAppPurchase on not supported platform. To test advertising, install your application on the Android/iOS device.");
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace AppodealAds.Unity.Common
         void onBannerLoaded(int height, bool isPrecache);
         void onBannerFailedToLoad();
         void onBannerShown();
+        void onBannerShowFailed();
         void onBannerClicked();
         void onBannerExpired();
     }

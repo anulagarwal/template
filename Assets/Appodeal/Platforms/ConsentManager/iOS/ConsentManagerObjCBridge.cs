@@ -292,7 +292,7 @@ namespace ConsentManager.Platforms.iOS
         
         public static string getIabConsentString()
         {
-            return GetIabConsentString();
+            return GetIabString();
         }
 
         public string hasConsentForVendor(string bundle)
@@ -310,7 +310,7 @@ namespace ConsentManager.Platforms.iOS
         private static extern string GetAuthorizationStatus();
 
         [DllImport("__Internal")]
-        private static extern string GetIabConsentString();
+        private static extern string GetIabString();
 
         [DllImport("__Internal")]
         private static extern string HasConsentForVendor(string bundle);
@@ -332,24 +332,14 @@ namespace ConsentManager.Platforms.iOS
             consentForm = intPtr;
         }
 
-        public IntPtr getConsentForm()
-        {
-            return consentForm;
-        }
-
         public static void load()
         {
             Load();
         }
 
-        public static void showAsActivity()
+        public static void show()
         {
-            ShowAsActivity();
-        }
-
-        public static void showAsDialog()
-        {
-            ShowAsDialog();
+            Show();
         }
 
         public static bool isLoaded()
@@ -369,10 +359,7 @@ namespace ConsentManager.Platforms.iOS
         private static extern void Load();
 
         [DllImport("__Internal")]
-        private static extern void ShowAsActivity();
-
-        [DllImport("__Internal")]
-        private static extern void ShowAsDialog();
+        private static extern void Show();
 
         [DllImport("__Internal")]
         private static extern bool IsLoaded();

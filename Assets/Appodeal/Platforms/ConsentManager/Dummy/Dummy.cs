@@ -1,14 +1,11 @@
+using UnityEngine;
 using System.Collections.Generic;
 using ConsentManager.Common;
-using UnityEngine;
 
 namespace ConsentManager.Platforms.Dummy
 {
-    public class Dummy : IConsentManager, IConsentForm, IVendor, IVendorBuilder, IConsentFormBuilder,
-        IConsentManagerException, IConsent
+    public class Dummy : IConsentManager, IConsentForm, IConsent, IVendor, IVendorBuilder, IConsentManagerException
     {
-        #region Dummy
-
         private const string DummyMessage = "Not supported on this platform";
 
         public void requestConsentInfoUpdate(string appodealAppKey, IConsentInfoUpdateListener listener)
@@ -72,12 +69,7 @@ namespace ConsentManager.Platforms.Dummy
             Debug.Log(DummyMessage);
         }
 
-        public void showAsActivity()
-        {
-            Debug.Log(DummyMessage);
-        }
-
-        public void showAsDialog()
+        public void show()
         {
             Debug.Log(DummyMessage);
         }
@@ -136,11 +128,6 @@ namespace ConsentManager.Platforms.Dummy
             return null;
         }
 
-        public void withListener(IConsentFormListener consentFormListener)
-        {
-            Debug.Log(DummyMessage);
-        }
-
         public void setPurposeIds(IEnumerable<int> purposeIds)
         {
             Debug.Log(DummyMessage);
@@ -154,12 +141,6 @@ namespace ConsentManager.Platforms.Dummy
         public void setLegitimateInterestPurposeIds(IEnumerable<int> legitimateInterestPurposeIds)
         {
             Debug.Log(DummyMessage);
-        }
-
-        IConsentForm IConsentFormBuilder.build()
-        {
-            Debug.Log(DummyMessage);
-            return null;
         }
 
         public string getReason()
@@ -203,7 +184,5 @@ namespace ConsentManager.Platforms.Dummy
             Debug.Log(DummyMessage);
             return DummyMessage;
         }
-
-        #endregion
     }
 }

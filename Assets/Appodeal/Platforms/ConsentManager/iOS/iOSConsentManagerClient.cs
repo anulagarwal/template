@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using AOT;
-using ConsentManager.Common;
 using UnityEngine;
+using ConsentManager.Common;
 
 namespace ConsentManager.Platforms.iOS
 {
@@ -148,7 +148,7 @@ namespace ConsentManager.Platforms.iOS
             return new Consent(new iOSConsent(consentManagerObjCBridge.getConsent()));
         }
 
-        #region ConsentInfoUpdate delegate
+    #region ConsentInfoUpdate delegate
 
         [MonoPInvokeCallback(typeof(ConsentInfoUpdatedCallback))]
         private static void onConsentInfoUpdated(IntPtr consent)
@@ -165,7 +165,7 @@ namespace ConsentManager.Platforms.iOS
                 new ConsentManagerException(new iOSConsentManagerException(error)));
         }
 
-        #endregion
+    #endregion
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -265,14 +265,9 @@ namespace ConsentManager.Platforms.iOS
             ConsentFormObjCBridge.load();
         }
 
-        public void showAsActivity()
+        public void show()
         {
-            ConsentFormObjCBridge.showAsActivity();
-        }
-
-        public void showAsDialog()
-        {
-            ConsentFormObjCBridge.showAsDialog();
+            ConsentFormObjCBridge.show();
         }
 
         public bool isLoaded()
@@ -290,7 +285,7 @@ namespace ConsentManager.Platforms.iOS
     [SuppressMessage("ReSharper", "UnassignedField.Global")]
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     [SuppressMessage("ReSharper", "UnusedType.Global")]
-    public class iOSConsentFormBuilder : IConsentFormBuilder
+    public class iOSConsentFormBuilder
     {
         private readonly ConsentFormBuilderObjCBridge consentFormBuilderObjCBridge;
         public static IConsentFormListener consentFormListeners;
@@ -322,7 +317,7 @@ namespace ConsentManager.Platforms.iOS
                 onConsentFormClosed);
         }
 
-        #region ConsentForm Callbacks
+    #region ConsentForm Callbacks
 
         [MonoPInvokeCallback(typeof(ConsentFormCallback))]
         private static void onConsentFormLoaded()
@@ -333,8 +328,7 @@ namespace ConsentManager.Platforms.iOS
         [MonoPInvokeCallback(typeof(ConsentFormCallbackError))]
         private static void onConsentFormError(IntPtr exception)
         {
-            consentFormListeners?.onConsentFormError(
-                new ConsentManagerException(new iOSConsentManagerException(exception)));
+            consentFormListeners?.onConsentFormError(new ConsentManagerException(new iOSConsentManagerException(exception)));
         }
 
         [MonoPInvokeCallback(typeof(ConsentFormCallback))]
@@ -349,7 +343,7 @@ namespace ConsentManager.Platforms.iOS
             consentFormListeners?.onConsentFormClosed(new Consent(new iOSConsent(consent)));
         }
 
-        #endregion
+    #endregion
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]

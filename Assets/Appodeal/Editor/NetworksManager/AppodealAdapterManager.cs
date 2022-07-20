@@ -1,20 +1,20 @@
 #if UNITY_2018_1_OR_NEWER
 using System;
+using System.IO;
+using System.Net;
+using System.Xml;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml;
-using Appodeal.Editor.AppodealManager.Data;
-using marijnz.EditorCoroutines;
 using UnityEditor;
 using UnityEngine;
 using File = UnityEngine.Windows.File;
 using UnityEngine.Networking;
+using Appodeal.Editor.AppodealManager.Data;
+using marijnz.EditorCoroutines;
 
 #pragma warning disable 618
 
@@ -36,11 +36,8 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
     {
         #region Dictionaries
 
-        private SortedDictionary<string, NetworkDependency> internalDependencies =
-            new SortedDictionary<string, NetworkDependency>();
-
-        private SortedDictionary<string, NetworkDependency> latestDependencies =
-            new SortedDictionary<string, NetworkDependency>();
+        private SortedDictionary<string, AppodealDependency> internalDependencies = new SortedDictionary<string, AppodealDependency>();
+        private SortedDictionary<string, AppodealDependency> latestDependencies = new SortedDictionary<string, AppodealDependency>();
 
         #endregion
 
@@ -94,10 +91,8 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
 
         public void Reset()
         {
-            internalDependencies =
-                new SortedDictionary<string, NetworkDependency>();
-            latestDependencies =
-                new SortedDictionary<string, NetworkDependency>();
+            internalDependencies = new SortedDictionary<string, AppodealDependency>();
+            latestDependencies = new SortedDictionary<string, AppodealDependency>();
 
             if (downloader != null)
             {
@@ -127,7 +122,8 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
 
         private void OnGUI()
         {
-            this.minSize = new Vector2(700, 900);
+            this.minSize = new Vector2(650, 650);
+            this.maxSize = new Vector2(2000, 2000);
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition,
                 false,
                 false);
@@ -202,18 +198,42 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                     using (new EditorGUILayout.VerticalScope(AppodealDependencyUtils.BoxStyle, GUILayout.Height(45)))
                     {
                         AppodealDependencyUtils.GuiHeaders(headerInfoStyle, btnFieldWidth);
-                        GuiAdaptersRows(PlatformSdk.iOS);
+                        GuiAdaptersRows(PlatformSdk.iOS, DependencyType.AdNetwork);
                     }
 
                     EditorGUILayout.LabelField(AppodealDependencyUtils.Android, labelStyle, GUILayout.Height(20));
                     using (new EditorGUILayout.VerticalScope(AppodealDependencyUtils.BoxStyle, GUILayout.Height(45)))
                     {
                         AppodealDependencyUtils.GuiHeaders(headerInfoStyle, btnFieldWidth);
-                        GuiAdaptersRows(PlatformSdk.Android);
+                        GuiAdaptersRows(PlatformSdk.Android, DependencyType.AdNetwork);
                     }
                 }
 
                 #endregion
+
+                #region ServicesAdaptersInfo
+
+                if (internalDependencies.Count > 0)
+                {
+                    EditorGUILayout.LabelField(AppodealDependencyUtils.AppodealServiceDependencies, labelStyle,
+                        GUILayout.Height(20));
+                    EditorGUILayout.LabelField(AppodealDependencyUtils.iOS, labelStyle, GUILayout.Height(20));
+                    using (new EditorGUILayout.VerticalScope(AppodealDependencyUtils.BoxStyle, GUILayout.Height(45)))
+                    {
+                        AppodealDependencyUtils.GuiHeaders(headerInfoStyle, btnFieldWidth);
+                        GuiAdaptersRows(PlatformSdk.iOS, DependencyType.Service);
+                    }
+
+                    EditorGUILayout.LabelField(AppodealDependencyUtils.Android, labelStyle, GUILayout.Height(20));
+                    using (new EditorGUILayout.VerticalScope(AppodealDependencyUtils.BoxStyle, GUILayout.Height(45)))
+                    {
+                        AppodealDependencyUtils.GuiHeaders(headerInfoStyle, btnFieldWidth);
+                        GuiAdaptersRows(PlatformSdk.Android, DependencyType.Service);
+                    }
+                }
+
+                #endregion
+
             }
 
             GUILayout.Space(5);
@@ -221,7 +241,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
             EditorGUILayout.EndScrollView();
         }
 
-        private void GuiAdaptersRows(PlatformSdk platformSdk)
+        private void GuiAdaptersRows(PlatformSdk platformSdk, DependencyType type)
         {
             foreach (var key in latestDependencies.Keys)
             {
@@ -235,52 +255,56 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                         switch (platformSdk)
                         {
                             case PlatformSdk.Android:
-                                if (internalDependency.android_info != null)
+                                if (latestDependency.type == type)
                                 {
-                                    if (!string.IsNullOrEmpty(internalDependency.android_info.name)
-                                        && !string.IsNullOrEmpty(internalDependency.android_info.version)
-                                        && !string.IsNullOrEmpty(internalDependency.android_info.unity_content))
+                                    if (internalDependency.android_info != null && latestDependency.android_info != null)
                                     {
-                                        SetAdapterUpdateInfo(latestDependency.name,
-                                            internalDependency.android_info.version,
-                                            latestDependency.android_info.version,
-                                            internalDependency.android_info.unity_content,
-                                            latestDependency.android_info.unity_content,
-                                            SDKInfo(latestDependency.android_info.dependencies));
+                                        if (!string.IsNullOrEmpty(internalDependency.android_info.name)
+                                            && !string.IsNullOrEmpty(internalDependency.android_info.version)
+                                            && !string.IsNullOrEmpty(internalDependency.android_info.unity_content))
+                                        {
+                                            SetAdapterUpdateInfo(latestDependency.name,
+                                                internalDependency.android_info.version,
+                                                latestDependency.android_info.version,
+                                                internalDependency.android_info.unity_content,
+                                                latestDependency.android_info.unity_content,
+                                                SDKInfo(latestDependency.android_info.dependencies));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (latestDependency.android_info.name != null)
+                                        {
+                                            SetAdapterInformationForImport(latestDependency, platformSdk);
+                                        }
                                     }
                                 }
-                                else
-                                {
-                                    if (latestDependency.android_info.name != null)
-                                    {
-                                        SetAdapterInformationForImport(latestDependency, platformSdk);
-                                    }
-                                }
-
                                 break;
                             case PlatformSdk.iOS:
-                                if (internalDependency.ios_info != null && latestDependency.ios_info != null)
+                                if (latestDependency.type == type)
                                 {
-                                    if (!string.IsNullOrEmpty(internalDependency.ios_info.name)
-                                        && !string.IsNullOrEmpty(internalDependency.ios_info.version)
-                                        && !string.IsNullOrEmpty(internalDependency.ios_info.unity_content))
+                                    if (internalDependency.ios_info != null && latestDependency.ios_info != null)
                                     {
-                                        SetAdapterUpdateInfo(latestDependency.name,
-                                            internalDependency.ios_info.version,
-                                            latestDependency.ios_info.version,
-                                            internalDependency.ios_info.unity_content,
-                                            latestDependency.ios_info.unity_content,
-                                            SDKInfo(latestDependency.ios_info.dependencies));
+                                        if (!string.IsNullOrEmpty(internalDependency.ios_info.name)
+                                            && !string.IsNullOrEmpty(internalDependency.ios_info.version)
+                                            && !string.IsNullOrEmpty(internalDependency.ios_info.unity_content))
+                                        {
+                                            SetAdapterUpdateInfo(latestDependency.name,
+                                                internalDependency.ios_info.version,
+                                                latestDependency.ios_info.version,
+                                                internalDependency.ios_info.unity_content,
+                                                latestDependency.ios_info.unity_content,
+                                                SDKInfo(latestDependency.ios_info.dependencies));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (latestDependency.ios_info?.name != null)
+                                        {
+                                            SetAdapterInformationForImport(latestDependency, platformSdk);
+                                        }
                                     }
                                 }
-                                else
-                                {
-                                    if (latestDependency.ios_info?.name != null)
-                                    {
-                                        SetAdapterInformationForImport(latestDependency, platformSdk);
-                                    }
-                                }
-
                                 break;
                         }
                     }
@@ -292,14 +316,14 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                         switch (platformSdk)
                         {
                             case PlatformSdk.Android:
-                                if (networkDependency.android_info?.name != null)
+                                if (networkDependency.type == type && networkDependency.android_info?.name != null)
                                 {
                                     SetAdapterInformationForImport(networkDependency, PlatformSdk.Android);
                                 }
 
                                 break;
                             case PlatformSdk.iOS:
-                                if (networkDependency.ios_info?.name != null)
+                                if (networkDependency.type == type && networkDependency.ios_info?.name != null)
                                 {
                                     SetAdapterInformationForImport(networkDependency, PlatformSdk.iOS);
                                 }
@@ -313,7 +337,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
             }
         }
 
-        private void SetAdapterInformationForImport(NetworkDependency latestDependency, PlatformSdk platformSdk)
+        private void SetAdapterInformationForImport(AppodealDependency latestDependency, PlatformSdk platformSdk)
         {
             switch (platformSdk)
             {
@@ -346,7 +370,6 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
             {
                 UpdateDependency(nameDep, AppodealDependencyUtils.SpecCloseDependencies,
                     content + "\n" + AppodealDependencyUtils.SpecCloseDependencies);
-                AppodealDependencyUtils.FormatXml(System.IO.File.ReadAllText(path));
             }
             else
             {
@@ -357,13 +380,13 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                     writer.Close();
                 }
 
-                AppodealDependencyUtils.FormatXml(System.IO.File.ReadAllText(path));
+                AppodealDependencyUtils.FormatXml(path);
             }
 
             UpdateWindow();
         }
 
-        private void GuiCoreRow(NetworkDependency internalDependency, NetworkDependency latestDependency,
+        private void GuiCoreRow(AppodealDependency internalDependency, AppodealDependency latestDependency,
             PlatformSdk platform)
         {
             if (internalDependency == null || latestDependency == null) return;
@@ -483,7 +506,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                 btnFieldWidth))
             {
                 var option = EditorUtility.DisplayDialog("Update dependencies",
-                    "If you will update core, all adapters this platform will be updated automatically. " +
+                    "If you will update core, all adapters for this platform will be updated automatically. " +
                     "Do you want to update core?",
                     "Ok",
                     "Cancel");
@@ -575,10 +598,10 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
             }
         }
 
-        private static string SDKInfo(IEnumerable<NetworkDependency.Dependency> dependencies)
+        private static string SDKInfo(IEnumerable<AppodealDependency.Dependency> dependencies)
         {
             string content = null;
-            var enumerable = dependencies as NetworkDependency.Dependency[] ?? dependencies.ToArray();
+            var enumerable = dependencies as AppodealDependency.Dependency[] ?? dependencies.ToArray();
             foreach (var dependency in enumerable)
             {
                 if (dependency.Equals(enumerable.Last()))
@@ -630,7 +653,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                         var text = System.IO.File.ReadAllLines(path).Where(s => s.Trim() != string.Empty).ToArray();
                         File.Delete(path);
                         System.IO.File.WriteAllLines(path, text);
-                        AppodealDependencyUtils.FormatXml(System.IO.File.ReadAllText(path));
+                        AppodealDependencyUtils.FormatXml(path);
 
                         UpdateWindow();
                     }
@@ -718,6 +741,8 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                     writer.Write(contentString);
                     writer.Close();
                 }
+
+                AppodealDependencyUtils.FormatXml(path);
             }
         }
 
@@ -865,19 +890,21 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                         yield break;
                     }
 
-                    var networkDependencies = JsonHelper.FromJson<NetworkDependency>(
-                        JsonHelper.fixJson(webRequest.downloadHandler.text));
-                    if (networkDependencies.Length > 0)
-                    {
-                        foreach (var networkDependency in networkDependencies)
-                        {
-                            if (!string.IsNullOrEmpty(networkDependency.name)
-                                && !networkDependency.name.Equals(AppodealDependencyUtils.TwitterMoPub))
-                            {
-                                latestDependencies.Add(networkDependency.name, networkDependency);
-                            }
-                        }
-                        
+                    var networkDependencies = JsonUtility.FromJson<ServerConfig>(webRequest.downloadHandler.text);
+
+                    networkDependencies.core.type = DependencyType.Core;
+                    networkDependencies.ad_networks.ForEach(network => network.type = DependencyType.AdNetwork);
+                    networkDependencies.services.ForEach(service => service.type = DependencyType.Service);
+
+                    var tempDeps = new List<AppodealDependency> {networkDependencies.core};
+                    networkDependencies.ad_networks.ForEach(dep => tempDeps.Add(dep));
+                    networkDependencies.services.ForEach(dep => tempDeps.Add(dep));
+
+                    tempDeps.Where(dep => !String.IsNullOrEmpty(dep.name) && !dep.name.Equals(AppodealDependencyUtils.TwitterMoPub))
+                               .ToList().ForEach(dep => latestDependencies.Add(dep.name, dep));
+
+                    if (latestDependencies.Count > 0)
+                    {                        
                         var missingAdapters = internalDependencies.Keys.Where(key => !latestDependencies.ContainsKey(key)).ToList();
                         if (missingAdapters.Count > 0) {
                             AppodealDependencyUtils.ShowInternalErrorDialog(this,
@@ -899,7 +926,7 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
 
         private void GetInternalDependencies(string dependencyPath)
         {
-            var networkDependency = new NetworkDependency
+            var networkDependency = new AppodealDependency
             {
                 name = AppodealDependencyUtils.GetConfigName(dependencyPath)
             };
@@ -939,9 +966,9 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                         {
                             if (podName != null && version != null && minTargetSdk != null)
                             {
-                                if (!podName.Contains(AppodealDependencyUtils.APDAppodealAdExchangeAdapter))
+                                if ((podName.Equals("Appodeal") || podName.StartsWith("APD")) && !podName.Contains(AppodealDependencyUtils.APDAppodealAdExchangeAdapter))
                                 {
-                                    networkDependency.ios_info = new NetworkDependency.iOSDependency(podName,
+                                    networkDependency.ios_info = new AppodealDependency.IosDependency(podName,
                                         version,
                                         AppodealDependencyUtils.GetiOSContent(dependencyPath));
                                 }
@@ -985,7 +1012,6 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
 
             #region AndroidInternalDependencies
 
-            var sources = new List<string>();
             string specName;
 
             XmlUtilities.ParseXmlTextFileElements(dependencyPath,
@@ -1003,7 +1029,6 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                         if (isStart)
                         {
                             specName = reader.GetAttribute("spec");
-                            sources = new List<string>();
                             if (specName == null)
                             {
                                 Debug.Log(
@@ -1011,66 +1036,41 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
                                 return false;
                             }
 
-                            foreach (var s in new List<string> { "vast", "nast", "mraid", "appodealx", "appodeal" })
+                            if (networkDependency.name == AppodealDependencyUtils.Appodeal && !specName.Contains(AppodealDependencyUtils.Replace_dependency_core)) return true;
+
+                            if (networkDependency.name != AppodealDependencyUtils.Appodeal && specName.Contains(AppodealDependencyUtils.Replace_dependency_core)) return true;
+                            
+                            if (networkDependency.name == AppodealDependencyUtils.GoogleAdMob && 
+                                !specName.Contains(AppodealDependencyUtils.ReplaceAdmobDepValue)) return true;
+
+                            if (specName.Contains(AppodealDependencyUtils.Replace_network_dependency_value) || specName.Contains(AppodealDependencyUtils.Replace_service_dependency_value))
                             {
-                                if (!specName.Contains(s))
-                                {
-                                    if (specName.Contains(AppodealDependencyUtils.Replace_dependency_value))
-                                    {
-                                        networkDependency.android_info = new NetworkDependency.AndroidDependency(
-                                            AppodealDependencyUtils.GetAndroidDependencyName(specName),
-                                            AppodealDependencyUtils.GetAndroidDependencyVersion(specName),
-                                            AppodealDependencyUtils.GetAndroidContent(dependencyPath));
-                                    }
-                                    else if (specName.Contains(AppodealDependencyUtils.Replace_dependency_core))
-                                    {
-                                        networkDependency.android_info = new NetworkDependency.AndroidDependency(
-                                            "appodeal",
-                                            AppodealDependencyUtils.GetAndroidDependencyCoreVersion(specName),
-                                            AppodealDependencyUtils.GetAndroidContent(dependencyPath));
-                                    }
-                                }
-                                else
-                                {
-                                    return false;
-                                }
+                                networkDependency.android_info = new AppodealDependency.AndroidDependency(
+                                    AppodealDependencyUtils.GetAndroidDependencyName(specName),
+                                    AppodealDependencyUtils.GetAndroidDependencyVersion(specName),
+                                    AppodealDependencyUtils.GetAndroidContent(dependencyPath));
+                                
+                                return false;
+                            }
+                            else if (specName.Contains(AppodealDependencyUtils.Replace_dependency_core))
+                            {
+                                networkDependency.android_info = new AppodealDependency.AndroidDependency(
+                                    "appodeal",
+                                    AppodealDependencyUtils.GetAndroidDependencyCoreVersion(specName),
+                                    AppodealDependencyUtils.GetAndroidContent(dependencyPath));
+                                
+                                return false;
+                            }
+                            else
+                            {
+                                return true;
                             }
                         }
-
-                        return true;
                     }
-
-                    if (elementName == "sources" && parentElementName == "androidPackage")
-                        return true;
-                    if (elementName == "sources" && parentElementName == "androidPackages")
-                    {
-                        if (isStart)
-                        {
-                            sources = new List<string>();
-                        }
-                        else
-                        {
-                            using (var enumerator = sources.GetEnumerator())
-                            {
-                                while (enumerator.MoveNext())
-                                {
-                                    var current = enumerator.Current;
-                                    Debug.Log(current);
-                                }
-                            }
-                        }
-
-                        return true;
-                    }
-
-                    if (elementName != "source" || parentElementName != "sources")
-                        return false;
-                    if (isStart && reader.Read() && reader.NodeType == XmlNodeType.Text)
-                        sources.Add(reader.ReadContentAsString());
-                    return true;
+                    return false;
                 });
 
-            #endregion
+                #endregion
 
             if (!string.IsNullOrEmpty(networkDependency.name))
             {

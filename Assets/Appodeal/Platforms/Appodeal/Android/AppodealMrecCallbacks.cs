@@ -18,34 +18,37 @@ namespace AppodealAds.Unity.Android
 
         private void onMrecLoaded(bool isPrecache)
         {
-            listener.onMrecLoaded(isPrecache);
+            listener?.onMrecLoaded(isPrecache);
         }
 
         private void onMrecFailedToLoad()
         {
-            listener.onMrecFailedToLoad();
+            listener?.onMrecFailedToLoad();
         }
 
         private void onMrecShown()
         {
-            listener.onMrecShown();
+            listener?.onMrecShown();
+        }
+
+        private void onMrecShowFailed()
+        {
+            listener?.onMrecShowFailed();
         }
 
         private void onMrecClicked()
         {
-            listener.onMrecClicked();
+            listener?.onMrecClicked();
         }
 
         private void onMrecExpired()
         {
-            listener.onMrecExpired();
+            listener?.onMrecExpired();
         }
     }
 #else
     {
-        public AppodealMrecCallbacks(IMrecAdListener listener)
-        {
-        }
+        public AppodealMrecCallbacks(IMrecAdListener listener) { }
     }
 #endif
 }

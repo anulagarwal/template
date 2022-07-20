@@ -10,8 +10,9 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "ParameterHidesMember")]
-    public class AppodealDemo : MonoBehaviour, IConsentFormListener, IConsentInfoUpdateListener,
-        IBannerAdListener, IMrecAdListener, IRewardedVideoAdListener, IInterstitialAdListener
+    public class AppodealDemo : MonoBehaviour, IAppodealInitializationListener, IInAppPurchaseValidationListener,
+                                IBannerAdListener, IInterstitialAdListener, IRewardedVideoAdListener, IMrecAdListener,
+                                IConsentFormListener, IConsentInfoUpdateListener
     {
         #region Constants
 
@@ -37,19 +38,18 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 #if UNITY_EDITOR && !UNITY_ANDROID && !UNITY_IPHONE
         public static string appKey = "";
 #elif UNITY_ANDROID
-       public static string appKey = "fee50c333ff3825fd6ad6d38cff78154de3025546d47a84f";
+        public static string appKey = "fee50c333ff3825fd6ad6d38cff78154de3025546d47a84f";
 #elif UNITY_IPHONE
-       public static string appKey = "466de0d625e01e8811c588588a42a55970bc7c132649eede";
+        public static string appKey = "466de0d625e01e8811c588588a42a55970bc7c132649eede";
 #else
-	public static string appKey = "";
+	    public static string appKey = "";
 #endif
 
         #endregion
 
+        private Consent currentConsent;
         private ConsentForm consentForm;
         private ConsentManager consentManager;
-        private bool isShouldSaveConsentForm;
-        private Consent currentConsent;
 
         private void Start()
         {
@@ -60,6 +60,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
             btnShowRewardedVideo.GetComponentInChildren<Text>().text = CACHE_REWARDED_VIDEO;
 
             consentManager = ConsentManager.getInstance();
+            consentManager.setStorage(ConsentManager.Storage.SHARED_PREFERENCE);
         }
 
         private void OnDestroy()
@@ -69,7 +70,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void RequestConsentInfoUpdate()
         {
-            consentManager.requestConsentInfoUpdate(appKey, this);
+            consentManager?.requestConsentInfoUpdate(appKey, this);
         }
 
         public void SetCustomVendor()
@@ -79,13 +80,13 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
                     "com.appodeal.test",
                     "https://customvendor.com")
                 .setPurposeIds(new List<int> {100, 200, 300})
-                .setFeatureId(new List<int> {400, 500, 600})
+                .setFeatureIds(new List<int> {400, 500, 600})
                 .setLegitimateInterestPurposeIds(new List<int> {700, 800, 900})
                 .build();
 
-            consentManager.setCustomVendor(customVendor);
+            consentManager?.setCustomVendor(customVendor);
 
-            var vendor = consentManager.getCustomVendor("com.appodeal.test");
+            var vendor = consentManager?.getCustomVendor("com.appodeal.test");
             if (vendor == null) return;
             Debug.Log("Vendor getName: " + vendor.getName());
             Debug.Log("Vendor getBundle: " + vendor.getBundle());
@@ -123,11 +124,8 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void LoadConsentForm()
         {
-            consentForm = new ConsentForm.Builder().withListener(this).build();
-            if (consentForm != null)
-            {
-                consentForm.load();
-            }
+            consentForm = ConsentForm.GetInstance(this);
+            consentForm?.load();
         }
 
         public void IsLoadedConsentForm()
@@ -142,7 +140,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         {
             if (consentForm != null)
             {
-                consentForm.showAsActivity();
+                consentForm.show();
             }
             else
             {
@@ -154,7 +152,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         {
             if (consentForm != null)
             {
-                consentForm.showAsDialog();
+                consentForm.show();
             }
             else
             {
@@ -170,11 +168,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         public void PrintCurrentConsent()
         {
             if (consentManager.getConsent() == null) return;
-            Debug.Log(
-                "consent.getIabConsentString() - " + consentManager.getConsent().getIabConsentString());
-            Debug.Log(
-                "consent.hasConsentForVendor() - " +
-                consentManager.getConsent().hasConsentForVendor("com.appodeal.test"));
+            Debug.Log("consent.hasConsentForVendor() - " + consentManager.getConsent().hasConsentForVendor("com.appodeal.test"));
             Debug.Log("consent.getStatus() - " + consentManager.getConsent().getStatus());
             Debug.Log("consent.getZone() - " + consentManager.getConsent().getZone());
         }
@@ -198,46 +192,56 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void InitWithConsent(bool isConsent)
         {
-            Appodeal.setTesting(tgTesting.isOn);
             Appodeal.setLogLevel(tgLogging.isOn ? Appodeal.LogLevel.Verbose : Appodeal.LogLevel.None);
+            Appodeal.setTesting(tgTesting.isOn);
+            Appodeal.setUseSafeArea(true);
+
             Appodeal.setUserId("1");
-            Appodeal.setUserAge(1);
-            Appodeal.setUserGender(UserSettings.Gender.OTHER);
-            Appodeal.disableLocationPermissionCheck();
-            Appodeal.setTriggerOnLoadedOnPrecache(Appodeal.INTERSTITIAL, true);
+            Appodeal.setCustomFilter(UserSettings.USER_AGE, 18);
+            Appodeal.setCustomFilter(UserSettings.USER_GENDER, (int) UserSettings.Gender.MALE);
+
+            Appodeal.setExtraData("testKey", "testValue");
+            Appodeal.resetExtraData("testKey");
+
             Appodeal.setSmartBanners(true);
             Appodeal.setBannerAnimation(false);
             Appodeal.setTabletBanners(false);
-            Appodeal.setBannerBackground(false);
+            Appodeal.setBannerRotation(-90, 110);
+
+            Appodeal.disableLocationPermissionCheck();
             Appodeal.setChildDirectedTreatment(false);
             Appodeal.muteVideosIfCallsMuted(true);
-            Appodeal.setSharedAdsInstanceAcrossActivities(true);
+
+            Appodeal.setTriggerOnLoadedOnPrecache(Appodeal.INTERSTITIAL, true);
+
+            Appodeal.disableNetwork(AppodealNetworks.VUNGLE);
+            Appodeal.disableNetwork(AppodealNetworks.YANDEX, Appodeal.MREC);
+
             Appodeal.setAutoCache(Appodeal.INTERSTITIAL, false);
             Appodeal.setAutoCache(Appodeal.REWARDED_VIDEO, false);
-            Appodeal.setUseSafeArea(true);
-
-            if (isConsent)
-            {
-                Appodeal.initialize(appKey,
-                    Appodeal.INTERSTITIAL | Appodeal.BANNER | Appodeal.REWARDED_VIDEO | Appodeal.MREC,
-                    currentConsent);
-            }
-            else
-            {
-                Appodeal.initialize(appKey,
-                    Appodeal.INTERSTITIAL | Appodeal.BANNER | Appodeal.REWARDED_VIDEO | Appodeal.MREC,
-                    true);
-            }
 
             Appodeal.setBannerCallbacks(this);
             Appodeal.setInterstitialCallbacks(this);
             Appodeal.setRewardedVideoCallbacks(this);
             Appodeal.setMrecCallbacks(this);
 
-            Appodeal.setSegmentFilter("newBoolean", true);
-            Appodeal.setSegmentFilter("newInt", 1234567890);
-            Appodeal.setSegmentFilter("newDouble", 123.123456789);
-            Appodeal.setSegmentFilter("newString", "newStringFromSDK");
+            Appodeal.setCustomFilter("newBoolean", true);
+            Appodeal.setCustomFilter("newInt", 1234567890);
+            Appodeal.setCustomFilter("newDouble", 123.123456789);
+            Appodeal.setCustomFilter("newString", "newStringFromSDK");
+
+            if (isConsent)
+            {
+                Appodeal.updateConsent(currentConsent);
+            }
+            else
+            {
+                Appodeal.updateCcpaConsent(Appodeal.CcpaUserConsent.OptOut);
+                Appodeal.updateGdprConsent(Appodeal.GdprUserConsent.NonPersonalized);
+            }
+
+            int adTypes = Appodeal.INTERSTITIAL | Appodeal.BANNER | Appodeal.REWARDED_VIDEO | Appodeal.MREC;
+            Appodeal.initialize(appKey, adTypes, (IAppodealInitializationListener) this);
         }
 
         public void ShowInterstitial()
@@ -281,8 +285,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void ShowBannerView()
         {
-            Appodeal.showBannerView(Screen.currentResolution.height - Screen.currentResolution.height / 10,
-                Appodeal.BANNER_HORIZONTAL_CENTER, "default");
+            Appodeal.showBannerView(Appodeal.BANNER_BOTTOM, Appodeal.BANNER_HORIZONTAL_CENTER, "default");
         }
 
         public void HideBannerView()
@@ -292,8 +295,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void ShowMrecView()
         {
-            Appodeal.showMrecView(Screen.currentResolution.height - Screen.currentResolution.height / 10,
-                Appodeal.BANNER_HORIZONTAL_CENTER, "default");
+            Appodeal.showMrecView(Appodeal.BANNER_TOP, Appodeal.BANNER_HORIZONTAL_CENTER, "default");
         }
 
         public void HideMrecView()
@@ -310,6 +312,76 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         {
             Appodeal.show(Appodeal.BANNER_RIGHT);
         }
+
+        #region AppodealInitializeListener
+
+        public void onInitializationFinished(List<string> errors)
+        {
+            string output = errors == null ? string.Empty : string.Join(", ", errors);
+            Debug.Log($"onInitializationFinished(errors:[{output}])");
+
+            Debug.Log($"isAutoCacheEnabled() for banner: {Appodeal.isAutoCacheEnabled(Appodeal.BANNER)}");
+            Debug.Log($"isInitialized() for banner: {Appodeal.isInitialized(Appodeal.BANNER)}");
+            Debug.Log($"isSmartBannersEnabled(): {Appodeal.isSmartBannersEnabled()}");
+            Debug.Log($"getUserId(): {Appodeal.getUserId()}");
+            Debug.Log($"getSegmentId(): {Appodeal.getSegmentId()}");
+            Debug.Log($"getRewardParameters(): {Appodeal.getRewardParameters()}");
+            Debug.Log($"getNativeSDKVersion(): {Appodeal.getNativeSDKVersion()}");
+
+            var networksList = Appodeal.getNetworks(Appodeal.REWARDED_VIDEO);
+            output = networksList == null ? string.Empty : string.Join(", ", (networksList.ToArray()));
+            Debug.Log($"getNetworks() for RV: {output}");
+
+#if UNITY_ANDROID
+            var additionalParams = new Dictionary<string, string> { { "key1", "value1" }, { "key2", "value2" } };
+
+            var purchase = new PlayStoreInAppPurchase.Builder(Appodeal.PlayStorePurchaseType.Subs)
+                .withAdditionalParameters(additionalParams)
+                .withPurchaseTimestamp(793668600)
+                .withDeveloperPayload("payload")
+                .withPurchaseToken("token")
+                .withPurchaseData("data")
+                .withPublicKey("key")
+                .withSignature("signature")
+                .withCurrency("USD")
+                .withOrderId("orderId")
+                .withPrice("1.99")
+                .withSku("sku")
+                .build();
+
+            Appodeal.validatePlayStoreInAppPurchase(purchase, this);
+#elif UNITY_IOS
+            var additionalParams = new Dictionary<string, string> { { "key1", "value1" }, { "key2", "value2" } };
+
+            var purchase = new AppStoreInAppPurchase.Builder(Appodeal.AppStorePurchaseType.Consumable)
+                .withAdditionalParameters(additionalParams)
+                .withTransactionId("transactionId")
+                .withProductId("productId")
+                .withCurrency("USD")
+                .withPrice("2.89")
+                .build();
+
+            Appodeal.validateAppStoreInAppPurchase(purchase, this);
+#endif
+
+            Appodeal.logEvent("test_event", new Dictionary<string, object> { { "test_key_1", 42 }, { "test_key_2", "test_value" } });
+        }
+
+        #endregion
+
+        #region InAppPurchaseValidationListener
+
+        public void onInAppPurchaseValidationSucceeded(string json)
+        {
+            Debug.Log($"onInAppPurchaseValidationSucceeded(string json:\n{json})");
+        }
+
+        public void onInAppPurchaseValidationFailed(string json)
+        {
+            Debug.Log($"onInAppPurchaseValidationFailed(string json:\n{json})");
+        }
+
+        #endregion
 
         #region ConsentFormListener
 
@@ -378,6 +450,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
             Debug.Log("onBannerLoaded");
             Debug.Log($"Banner height - {height}");
             Debug.Log($"Banner precache - {precache}");
+            Debug.Log($"getPredictedEcpm(): {Appodeal.getPredictedEcpm(Appodeal.BANNER)}");
         }
 
         public void onBannerFailedToLoad()
@@ -387,17 +460,22 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void onBannerShown()
         {
-            print("onBannerShown");
+            Debug.Log("onBannerShown");
+        }
+
+        public void onBannerShowFailed()
+        {
+            Debug.Log("onBannerShowFailed");
         }
 
         public void onBannerClicked()
         {
-            print("onBannerClicked");
+            Debug.Log("onBannerClicked");
         }
 
         public void onBannerExpired()
         {
-            print("onBannerExpired");
+            Debug.Log("onBannerExpired");
         }
 
         #endregion
@@ -416,6 +494,7 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
             }
 
             Debug.Log("onInterstitialLoaded");
+            Debug.Log($"getPredictedEcpm(): {Appodeal.getPredictedEcpm(Appodeal.INTERSTITIAL)}");
         }
 
         public void onInterstitialFailedToLoad()
@@ -456,43 +535,44 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
         public void onRewardedVideoLoaded(bool isPrecache)
         {
             btnShowRewardedVideo.GetComponentInChildren<Text>().text = "SHOW REWARDED VIDEO";
-            print("onRewardedVideoLoaded");
+            Debug.Log("onRewardedVideoLoaded");
+            Debug.Log($"getPredictedEcpm(): {Appodeal.getPredictedEcpm(Appodeal.REWARDED_VIDEO)}");
         }
 
         public void onRewardedVideoFailedToLoad()
         {
-            print("onRewardedVideoFailedToLoad");
+            Debug.Log("onRewardedVideoFailedToLoad");
         }
 
         public void onRewardedVideoShowFailed()
         {
-            print("onRewardedVideoShowFailed");
+            Debug.Log("onRewardedVideoShowFailed");
         }
 
         public void onRewardedVideoShown()
         {
-            print("onRewardedVideoShown");
+            Debug.Log("onRewardedVideoShown");
         }
 
         public void onRewardedVideoClosed(bool finished)
         {
             btnShowRewardedVideo.GetComponentInChildren<Text>().text = "CACHE REWARDED VIDEO";
-            print($"onRewardedVideoClosed. Finished - {finished}");
+            Debug.Log($"onRewardedVideoClosed. Finished - {finished}");
         }
 
         public void onRewardedVideoFinished(double amount, string name)
         {
-            print("onRewardedVideoFinished. Reward: " + amount + " " + name);
+            Debug.Log("onRewardedVideoFinished. Reward: " + amount + " " + name);
         }
 
         public void onRewardedVideoExpired()
         {
-            print("onRewardedVideoExpired");
+            Debug.Log("onRewardedVideoExpired");
         }
 
         public void onRewardedVideoClicked()
         {
-            print("onRewardedVideoClicked");
+            Debug.Log("onRewardedVideoClicked");
         }
 
         #endregion
@@ -501,27 +581,33 @@ namespace ConsentManager.ConsentManagerDemo.Scripts
 
         public void onMrecLoaded(bool precache)
         {
-            print($"onMrecLoaded. Precache - {precache}");
+            Debug.Log($"onMrecLoaded. Precache - {precache}");
+            Debug.Log($"getPredictedEcpm(): {Appodeal.getPredictedEcpm(Appodeal.MREC)}");
         }
 
         public void onMrecFailedToLoad()
         {
-            print("onMrecFailedToLoad");
+            Debug.Log("onMrecFailedToLoad");
         }
 
         public void onMrecShown()
         {
-            print("onMrecShown");
+            Debug.Log("onMrecShown");
+        }
+
+        public void onMrecShowFailed()
+        {
+            Debug.Log("onMrecShowFailed");
         }
 
         public void onMrecClicked()
         {
-            print("onMrecClicked");
+            Debug.Log("onMrecClicked");
         }
 
         public void onMrecExpired()
         {
-            print("onMrecExpired");
+            Debug.Log("onMrecExpired");
         }
 
         #endregion

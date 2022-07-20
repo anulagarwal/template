@@ -11,52 +11,49 @@ namespace AppodealAds.Unity.Android
     {
         private readonly IInterstitialAdListener listener;
 
-        internal AppodealInterstitialCallbacks(IInterstitialAdListener listener) : base(
-            "com.appodeal.ads.InterstitialCallbacks")
+        internal AppodealInterstitialCallbacks(IInterstitialAdListener listener) : base("com.appodeal.ads.InterstitialCallbacks")
         {
             this.listener = listener;
         }
 
         private void onInterstitialLoaded(bool isPrecache)
         {
-            listener.onInterstitialLoaded(isPrecache);
+            listener?.onInterstitialLoaded(isPrecache);
         }
 
         private void onInterstitialFailedToLoad()
         {
-            listener.onInterstitialFailedToLoad();
+            listener?.onInterstitialFailedToLoad();
         }
 
         private void onInterstitialShowFailed()
         {
-            listener.onInterstitialShowFailed();
+            listener?.onInterstitialShowFailed();
         }
 
         private void onInterstitialShown()
         {
-            listener.onInterstitialShown();
+            listener?.onInterstitialShown();
         }
 
         private void onInterstitialClicked()
         {
-            listener.onInterstitialClicked();
+            listener?.onInterstitialClicked();
         }
 
         private void onInterstitialClosed()
         {
-            listener.onInterstitialClosed();
+            listener?.onInterstitialClosed();
         }
 
         private void onInterstitialExpired()
         {
-            listener.onInterstitialExpired();
+            listener?.onInterstitialExpired();
         }
     }
 #else
     {
-        public AppodealInterstitialCallbacks(IInterstitialAdListener listener)
-        {
-        }
+        public AppodealInterstitialCallbacks(IInterstitialAdListener listener) { }
     }
 #endif
 }

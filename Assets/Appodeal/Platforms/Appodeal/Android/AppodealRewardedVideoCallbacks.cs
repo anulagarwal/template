@@ -11,62 +11,59 @@ namespace AppodealAds.Unity.Android
     {
         private readonly IRewardedVideoAdListener listener;
 
-        internal AppodealRewardedVideoCallbacks(IRewardedVideoAdListener listener) : base(
-            "com.appodeal.ads.RewardedVideoCallbacks")
+        internal AppodealRewardedVideoCallbacks(IRewardedVideoAdListener listener) : base("com.appodeal.ads.RewardedVideoCallbacks")
         {
             this.listener = listener;
         }
 
         private void onRewardedVideoLoaded(bool precache)
         {
-            listener.onRewardedVideoLoaded(precache);
+            listener?.onRewardedVideoLoaded(precache);
         }
 
         private void onRewardedVideoFailedToLoad()
         {
-            listener.onRewardedVideoFailedToLoad();
+            listener?.onRewardedVideoFailedToLoad();
         }
 
         private void onRewardedVideoShowFailed()
         {
-            listener.onRewardedVideoShowFailed();
+            listener?.onRewardedVideoShowFailed();
         }
 
         private void onRewardedVideoShown()
         {
-            listener.onRewardedVideoShown();
+            listener?.onRewardedVideoShown();
         }
 
         private void onRewardedVideoFinished(double amount, UnityEngine.AndroidJavaObject name)
         {
-            listener.onRewardedVideoFinished(amount, null);
+            listener?.onRewardedVideoFinished(amount, null);
         }
 
         private void onRewardedVideoFinished(double amount, string name)
         {
-            listener.onRewardedVideoFinished(amount, name);
+            listener?.onRewardedVideoFinished(amount, name);
         }
 
         private void onRewardedVideoClosed(bool finished)
         {
-            listener.onRewardedVideoClosed(finished);
+            listener?.onRewardedVideoClosed(finished);
         }
 
         private void onRewardedVideoExpired()
         {
-            listener.onRewardedVideoExpired();
+            listener?.onRewardedVideoExpired();
         }
 
         private void onRewardedVideoClicked()
         {
-            listener.onRewardedVideoClicked();
+            listener?.onRewardedVideoClicked();
         }
     }
 #else
     {
-        public AppodealRewardedVideoCallbacks(IRewardedVideoAdListener listener)
-        {
-        }
+        public AppodealRewardedVideoCallbacks(IRewardedVideoAdListener listener) { }
     }
 #endif
 }

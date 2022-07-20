@@ -1,6 +1,6 @@
 ﻿using ConsentManager.Common;
-using ConsentManager.Platforms.Android;
 using ConsentManager.Platforms.iOS;
+using ConsentManager.Platforms.Android;
 
 namespace ConsentManager.Platforms
 {
@@ -9,9 +9,9 @@ namespace ConsentManager.Platforms
         internal static IConsentManager GetConsentManager()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-			return new AndroidConsentManager ();
+            return new AndroidConsentManager();
 #elif UNITY_IPHONE && !UNITY_EDITOR
-			return new iOSConsentManager();
+            return new iOSConsentManager();
 #else
             return new Dummy.Dummy();
 #endif
@@ -20,20 +20,22 @@ namespace ConsentManager.Platforms
         internal static IVendorBuilder GetVendorBuilder(string name, string bundle, string policyUrl)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-			return new AndroidVendorBuilder (name, bundle, policyUrl);
+            return new AndroidVendorBuilder(name, bundle, policyUrl);
 #elif UNITY_IPHONE && !UNITY_EDITOR
-			return new iOSVendorBuilder(name, bundle, policyUrl);
+            return new iOSVendorBuilder(name, bundle, policyUrl);
 #else
             return new Dummy.Dummy();
 #endif
         }
 
-        internal static IConsentFormBuilder GetConsentFormBuilder()
+        internal static IConsentForm GetConsentForm(IConsentFormListener listener)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-			return new AndroidConsentFormBuilder();
+            return new AndroidConsentForm(listener);
 #elif UNITY_IPHONE && !UNITY_EDITOR
-            return new iOSConsentFormBuilder();
+            var builder = new iOSConsentFormBuilder();
+            builder.withListener(listener);
+            return builder.build();
 #else
             return new Dummy.Dummy();
 #endif
@@ -42,9 +44,9 @@ namespace ConsentManager.Platforms
         internal static IConsentManagerException GetConsentManagerException()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-			return new AndroidConsentManagerException();
+            return new AndroidConsentManagerException();
 #elif UNITY_IPHONE && !UNITY_EDITOR
-			return new iOSConsentManagerException();
+            return new iOSConsentManagerException();
 #else
             return new Dummy.Dummy();
 #endif

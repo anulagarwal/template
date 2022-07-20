@@ -11,8 +11,7 @@ namespace ConsentManager.Platforms.Android
     {
         private readonly IConsentInfoUpdateListener listener;
 
-        internal ConsentInfoUpdateCallbacks(IConsentInfoUpdateListener listener) : base(
-            "com.explorestack.consent.ConsentInfoUpdateListener")
+        internal ConsentInfoUpdateCallbacks(IConsentInfoUpdateListener listener) : base("com.appodeal.consent.IConsentInfoUpdateListener")
         {
             this.listener = listener;
         }
@@ -29,9 +28,7 @@ namespace ConsentManager.Platforms.Android
     }
 #else
     {
-        public ConsentInfoUpdateCallbacks(IConsentInfoUpdateListener listener)
-        {
-        }
+        public ConsentInfoUpdateCallbacks(IConsentInfoUpdateListener listener) { }
     }
 #endif
 }

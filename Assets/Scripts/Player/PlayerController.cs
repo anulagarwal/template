@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Attributes")]
+    [SerializeField] float speed;
+    [SerializeField] bool canSlide;
+    [SerializeField] float slideSpeed;
     // Start is called before the first frame update
     void Start()
     {

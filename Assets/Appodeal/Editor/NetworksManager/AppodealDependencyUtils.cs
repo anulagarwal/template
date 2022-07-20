@@ -1,14 +1,15 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
-using UnityEngine;
-using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml;
-using Appodeal.Editor.AppodealManager.Data;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using UnityEngine;
 using UnityEditor;
+using Appodeal.Editor.AppodealManager.Data;
+
 // ReSharper disable All
 
 namespace Appodeal.Editor.AppodealManager.AppodealDependencies
@@ -20,12 +21,13 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
     {
         #region Constants
 
-        
-        public const string PluginRequest = "https://mw-backend.appodeal.com/v2/unity";
-        public const string AdaptersRequest = "https://mw-backend.appodeal.com/v2/unity/config/";
+        public const string PluginRequest = "https://mw-backend.appodeal.com/v2.1/unity";
+        public const string AdaptersRequest = "https://mw-backend.appodeal.com/v2.1/unity/config/";
         public const string Network_configs_path = "Assets/Appodeal/Editor/NetworkConfigs/";
-        public const string Replace_dependency_value = "com.appodeal.ads.sdk.networks:";
+        public const string Replace_network_dependency_value = "com.appodeal.ads.sdk.networks:";
+        public const string Replace_service_dependency_value = "com.appodeal.ads.sdk.services:";
         public const string Replace_dependency_core = "com.appodeal.ads.sdk:core:";
+        public const string ReplaceAdmobDepValue = "com.appodeal.ads.sdk.networks:admob";
         public const string PackageName = "Name";
         public const string CurrentVersionHeader = "Current Version";
         public const string LatestVersionHeader = "Latest Version";
@@ -44,10 +46,12 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
         public const string iOS = "iOS";
         public const string Android = "Android";
         public const string AppodealNetworkDependencies = "Appodeal Network Dependencies";
+        public const string AppodealServiceDependencies = "Appodeal Service Dependencies";
         public const string SpecOpenDependencies = "<dependencies>\n";
         public const string SpecCloseDependencies = "</dependencies>";
         public const string XmlFileExtension = ".xml";
         public const string TwitterMoPub = "TwitterMoPub";
+        public const string GoogleAdMob = "GoogleAdMob";
         public const string APDAppodealAdExchangeAdapter = "APDAppodealAdExchangeAdapter";
         public const string Dependencies = "Dependencies";
 
@@ -90,11 +94,11 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
         public static void FormatXml(string inputXml)
         {
             var document = new XmlDocument();
-            document.Load(new StringReader(inputXml));
-            var builder = new StringBuilder();
-            using (var writer = new XmlTextWriter(new StringWriter(builder)))
+            document.Load(inputXml);
+            using (var writer = new XmlTextWriter(inputXml, Encoding.UTF8))
             {
                 writer.Formatting = Formatting.Indented;
+                writer.Indentation = 4;
                 document.Save(writer);
             }
         }
@@ -176,20 +180,16 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
 
         public static string GetAndroidDependencyName(string value)
         {
-            var dependencyName = value.Replace(Replace_dependency_value, string.Empty);
-            var sub = dependencyName.Substring(0,
-                dependencyName.LastIndexOf(":", StringComparison.Ordinal));
-            return sub.Contains("@aar") ? sub.Substring(0, sub.LastIndexOf("@", StringComparison.Ordinal)) : sub;
+            return value.Substring(value.IndexOf(':') + 1, value.LastIndexOf(':') - value.IndexOf(':') - 1);
         }
 
         public static string GetAndroidDependencyVersion(string value)
         {
-            var androidDependencyVersion =
-                value.Replace(Replace_dependency_value + GetAndroidDependencyName(value) + ":", string.Empty);
+            string androidDependencyVersion = value.Substring(value.LastIndexOf(':') + 1);
             if (androidDependencyVersion.Contains("@aar"))
             {
                 androidDependencyVersion = androidDependencyVersion.Substring(0,
-                    androidDependencyVersion.LastIndexOf("@", StringComparison.Ordinal));
+                    androidDependencyVersion.IndexOf('@'));
             }
 
             return androidDependencyVersion;
@@ -280,19 +280,9 @@ namespace Appodeal.Editor.AppodealManager.AppodealDependencies
             }
         }
 
-        public static NetworkDependency GetAppodealDependency(
-            SortedDictionary<string, NetworkDependency> networkDependencies)
+        public static AppodealDependency GetAppodealDependency(SortedDictionary<string, AppodealDependency> dependencies)
         {
-            NetworkDependency networkDependency = null;
-            foreach (var dependency
-                in networkDependencies.Where(dependency
-                        => dependency.Key.Contains(Appodeal))
-                    .Where(dependency => dependency.Value != null))
-            {
-                networkDependency = dependency.Value;
-            }
-
-            return networkDependency;
+            return dependencies.First(dep => dep.Key.Contains(Appodeal) && dep.Value != null).Value;
         }
     }
 

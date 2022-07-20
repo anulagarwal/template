@@ -1,25 +1,23 @@
 #if UNITY_ANDROID
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using UnityEngine;
 using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 using ConsentManager;
 using ConsentManager.Platforms.Android;
-using UnityEngine;
 
 namespace AppodealAds.Unity.Android
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class AndroidAppodealClient : IAppodealAdsClient
     {
-        private bool isShow;
         private AndroidJavaClass appodealClass;
         private AndroidJavaClass appodealUnityClass;
-        private AndroidJavaClass appodealBannerClass;
         private AndroidJavaObject appodealBannerInstance;
-        public AndroidJavaObject userSettings;
         private AndroidJavaObject activity;
-        private AndroidJavaObject popupWindow, resources, displayMetrics, window, decorView, attributes, rootView;
 
         public const int NONE = 0;
         public const int INTERSTITIAL = 3;
@@ -81,11 +79,6 @@ namespace AppodealAds.Unity.Android
                 nativeAdTypes |= Appodeal.REWARDED_VIDEO;
             }
 
-            if ((adTypes & Appodeal.NON_SKIPPABLE_VIDEO) > 0)
-            {
-                nativeAdTypes |= Appodeal.REWARDED_VIDEO;
-            }
-
             return nativeAdTypes;
         }
 
@@ -96,26 +89,23 @@ namespace AppodealAds.Unity.Android
 
         public AndroidJavaClass getAppodealUnityClass()
         {
-            return appodealUnityClass ??
-                   (appodealUnityClass = new AndroidJavaClass("com.appodeal.unity.AppodealUnity"));
+            return appodealUnityClass ?? (appodealUnityClass = new AndroidJavaClass("com.appodeal.unity.AppodealUnity"));
         }
 
         private AndroidJavaObject getAppodealBannerInstance()
         {
-            if (appodealBannerInstance != null) return appodealBannerInstance;
-            appodealBannerClass = new AndroidJavaClass("com.appodeal.ads.AppodealUnityBannerView");
-            appodealBannerInstance = appodealBannerClass.CallStatic<AndroidJavaObject>("getInstance");
-
-            return appodealBannerInstance;
+            return appodealBannerInstance ?? (appodealBannerInstance = new AndroidJavaClass("com.appodeal.ads.AppodealUnityBannerView").CallStatic<AndroidJavaObject>("getInstance"));
         }
 
         private AndroidJavaObject getActivity()
         {
-            if (activity != null) return activity;
-            var playerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            activity = playerClass.GetStatic<AndroidJavaObject>("currentActivity");
+            return activity ?? (activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity"));
+        }
 
-            return activity;
+        public void initialize(string appKey, int adTypes, IAppodealInitializationListener listener)
+        {
+            getAppodealClass().CallStatic("setFramework", "unity", Appodeal.getPluginVersion(), Appodeal.getUnityVersion());
+            getAppodealClass().CallStatic("initialize", getActivity(), appKey, nativeAdTypesForType(adTypes), new AppodealInitializationCallback(listener));
         }
 
         public void initialize(string appKey, int adTypes)
@@ -125,19 +115,15 @@ namespace AppodealAds.Unity.Android
 
         public void initialize(string appKey, int adTypes, bool hasConsent)
         {
-            getAppodealClass().CallStatic("setFramework", "unity", Appodeal.getPluginVersion(),
-                Appodeal.getUnityVersion());
-            getAppodealClass().CallStatic("initialize", getActivity(), appKey, nativeAdTypesForType(adTypes),
-                hasConsent);
+            getAppodealClass().CallStatic("setFramework", "unity", Appodeal.getPluginVersion(), Appodeal.getUnityVersion());
+            getAppodealClass().CallStatic("initialize", getActivity(), appKey, nativeAdTypesForType(adTypes), hasConsent);
         }
 
         public void initialize(string appKey, int adTypes, Consent consent)
         {
-            getAppodealClass().CallStatic("setFramework", "unity", Appodeal.getPluginVersion(),
-                Appodeal.getUnityVersion());
+            getAppodealClass().CallStatic("setFramework", "unity", Appodeal.getPluginVersion(), Appodeal.getUnityVersion());
             var androidConsent = (AndroidConsent) consent.getConsent();
-            getAppodealClass().CallStatic("initialize", getActivity(), appKey, nativeAdTypesForType(adTypes),
-                androidConsent.getConsent());
+            getAppodealClass().CallStatic("initialize", getActivity(), appKey, nativeAdTypesForType(adTypes), androidConsent.getConsent());
         }
 
         public bool isInitialized(int adType)
@@ -205,14 +191,14 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("setSmartBanners", value);
         }
 
+        public bool isSmartBannersEnabled()
+        {
+            return getAppodealClass().CallStatic<bool>("isSmartBannersEnabled");
+        }
+
         public void setBannerAnimation(bool value)
         {
             getAppodealClass().CallStatic("setBannerAnimation", value);
-        }
-
-        public void setBannerBackground(bool value)
-        {
-            Debug.LogWarning("Not Supported by Android SDK");
         }
 
         public void setTabletBanners(bool value)
@@ -230,20 +216,6 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("setTesting", test);
         }
 
-        private static AndroidJavaObject intToAndroid(int value)
-        {
-            var integerClass = new AndroidJavaClass("java.lang.Integer");
-            var integer = integerClass.CallStatic<AndroidJavaObject>("valueOf", value);
-            return integer;
-        }
-
-        private static AndroidJavaObject boolToAndroid(bool value)
-        {
-            var boleanClass = new AndroidJavaClass("java.lang.Boolean");
-            var boolean = boleanClass.CallStatic<AndroidJavaObject>("valueOf", value);
-            return boolean;
-        }
-
         public void setLogLevel(Appodeal.LogLevel logging)
         {
             var logLevel = new AndroidJavaClass("com.appodeal.ads.utils.Log$LogLevel");
@@ -252,19 +224,19 @@ namespace AppodealAds.Unity.Android
                 case Appodeal.LogLevel.None:
                 {
                     getAppodealClass().CallStatic("setLogLevel",
-                        logLevel.CallStatic<AndroidJavaObject>("fromInteger", intToAndroid(0)));
+                        logLevel.CallStatic<AndroidJavaObject>("fromInteger", Helper.getJavaObject(0)));
                     break;
                 }
                 case Appodeal.LogLevel.Debug:
                 {
                     getAppodealClass().CallStatic("setLogLevel",
-                        logLevel.CallStatic<AndroidJavaObject>("fromInteger", intToAndroid(1)));
+                        logLevel.CallStatic<AndroidJavaObject>("fromInteger", Helper.getJavaObject(1)));
                     break;
                 }
                 case Appodeal.LogLevel.Verbose:
                 {
                     getAppodealClass().CallStatic("setLogLevel",
-                        logLevel.CallStatic<AndroidJavaObject>("fromInteger", intToAndroid(2)));
+                        logLevel.CallStatic<AndroidJavaObject>("fromInteger", Helper.getJavaObject(2)));
                     break;
                 }
                 default:
@@ -274,14 +246,12 @@ namespace AppodealAds.Unity.Android
 
         public void setChildDirectedTreatment(bool value)
         {
-            var boleanClass = new AndroidJavaClass("java.lang.Boolean");
-            var boolean = boleanClass.CallStatic<AndroidJavaObject>("valueOf", value);
-            getAppodealClass().CallStatic("setChildDirectedTreatment", boolean);
+            getAppodealClass().CallStatic("setChildDirectedTreatment", Helper.getJavaObject(value));
         }
 
         public void updateConsent(bool value)
         {
-            getAppodealClass().CallStatic("updateConsent", boolToAndroid(value));
+            getAppodealClass().CallStatic("updateConsent", Helper.getJavaObject(value));
         }
 
         public void updateConsent(Consent consent)
@@ -290,14 +260,64 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("updateConsent", androidConsent.getConsent());
         }
 
+        public void updateGdprConsent(Appodeal.GdprUserConsent consent)
+        {
+            var gdprConsent = new AndroidJavaClass("com.appodeal.ads.regulator.GDPRUserConsent");
+            switch (consent)
+            {
+                case Appodeal.GdprUserConsent.Unknown:
+                {
+                    getAppodealClass().CallStatic("updateGDPRUserConsent", gdprConsent.CallStatic<AndroidJavaObject>("valueOf", "Unknown"));
+                    break;
+                }
+                case Appodeal.GdprUserConsent.Personalized:
+                {
+                    getAppodealClass().CallStatic("updateGDPRUserConsent", gdprConsent.CallStatic<AndroidJavaObject>("valueOf", "Personalized"));
+                    break;
+                }
+                case Appodeal.GdprUserConsent.NonPersonalized:
+                {
+                    getAppodealClass().CallStatic("updateGDPRUserConsent", gdprConsent.CallStatic<AndroidJavaObject>("valueOf", "NonPersonalized"));
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(consent), consent, null);
+            }
+        }
+
+        public void updateCcpaConsent(Appodeal.CcpaUserConsent consent)
+        {
+            var ccpaConsent = new AndroidJavaClass("com.appodeal.ads.regulator.CCPAUserConsent");
+            switch (consent)
+            {
+                case Appodeal.CcpaUserConsent.Unknown:
+                {
+                    getAppodealClass().CallStatic("updateCCPAUserConsent", ccpaConsent.CallStatic<AndroidJavaObject>("valueOf", "Unknown"));
+                    break;
+                }
+                case Appodeal.CcpaUserConsent.OptIn:
+                {
+                    getAppodealClass().CallStatic("updateCCPAUserConsent", ccpaConsent.CallStatic<AndroidJavaObject>("valueOf", "OptIn"));
+                    break;
+                }
+                case Appodeal.CcpaUserConsent.OptOut:
+                {
+                    getAppodealClass().CallStatic("updateCCPAUserConsent", ccpaConsent.CallStatic<AndroidJavaObject>("valueOf", "OptOut"));
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(consent), consent, null);
+            }
+        }
+
         public void disableNetwork(string network)
         {
-            getAppodealClass().CallStatic("disableNetwork", getActivity(), network);
+            getAppodealClass().CallStatic("disableNetwork", network);
         }
 
         public void disableNetwork(string network, int adTypes)
         {
-            getAppodealClass().CallStatic("disableNetwork", getActivity(), network, nativeAdTypesForType(adTypes));
+            getAppodealClass().CallStatic("disableNetwork", network, nativeAdTypesForType(adTypes));
         }
 
         public void disableLocationPermissionCheck()
@@ -326,6 +346,11 @@ namespace AppodealAds.Unity.Android
             return getAppodealClass().CallStatic<string>("getVersion");
         }
 
+        public long getSegmentId()
+        {
+            return getAppodealClass().CallStatic<long>("getSegmentId");
+        }
+
         public bool canShow(int adTypes)
         {
             return getAppodealClass().CallStatic<bool>("canShow", nativeAdTypesForType(adTypes));
@@ -334,26 +359,6 @@ namespace AppodealAds.Unity.Android
         public bool canShow(int adTypes, string placement)
         {
             return getAppodealClass().CallStatic<bool>("canShow", nativeAdTypesForType(adTypes), placement);
-        }
-
-        public void setSegmentFilter(string name, bool value)
-        {
-            Debug.Log("Not supported on Android platform. Use corresponding setCustomFilter method instead");
-        }
-
-        public void setSegmentFilter(string name, int value)
-        {
-            Debug.Log("Not supported on Android platform. Use corresponding setCustomFilter method instead");
-        }
-        
-        public void setSegmentFilter(string name, double value)
-        {
-            Debug.Log("Not supported on Android platform. Use corresponding setCustomFilter method instead");
-        }
-
-        public void setSegmentFilter(string name, string value)
-        {
-            Debug.Log("Not supported on Android platform. Use corresponding setCustomFilter method instead");
         }
         
         public void setCustomFilter(string name, bool value)
@@ -376,6 +381,11 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("setCustomFilter", name, value);
         }
 
+        public void resetCustomFilter(string name)
+        {
+            getAppodealClass().CallStatic("setCustomFilter", name, null);
+        }
+
         public void setExtraData(string key, bool value)
         {
             getAppodealClass().CallStatic("setExtraData", key, value);
@@ -396,9 +406,26 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("setExtraData", key, value);
         }
 
+        public void resetExtraData(string key)
+        {
+            getAppodealClass().CallStatic("setExtraData", key, null);
+        }
+
         public void trackInAppPurchase(double amount, string currency)
         {
             getAppodealClass().CallStatic("trackInAppPurchase", getActivity(), amount, currency);
+        }
+
+        public List<string> getNetworks(int adTypes)
+        {
+            var networks = getAppodealClass().CallStatic<AndroidJavaObject>("getNetworks", getActivity(), nativeAdTypesForType(adTypes));
+            int countOfNetworks = networks.Call<int>("size");
+            var networksList = new List<string>();
+            for(int i = 0; i < countOfNetworks; i++)
+            {
+                networksList.Add(networks.Call<string>("get", i));
+            }
+            return networksList;
         }
 
         public string getRewardCurrency(string placement)
@@ -439,16 +466,14 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("destroy", nativeAdTypesForType(adTypes));
         }
 
-        //User Settings
-
-        public void getUserSettings()
-        {
-            userSettings = getAppodealClass().CallStatic<AndroidJavaObject>("getUserSettings", getActivity());
-        }
-
         public void setUserId(string id)
         {
             getAppodealClass().CallStatic("setUserId", id);
+        }
+
+        public string getUserId()
+        {
+            return getAppodealClass().CallStatic<string>("getUserId");
         }
 
         public void setUserAge(int age)
@@ -491,12 +516,6 @@ namespace AppodealAds.Unity.Android
             getAppodealClass().CallStatic("setInterstitialCallbacks", new AppodealInterstitialCallbacks(listener));
         }
 
-        public void setNonSkippableVideoCallbacks(INonSkippableVideoAdListener listener)
-        {
-            getAppodealClass().CallStatic("setNonSkippableVideoCallbacks",
-                new AppodealNonSkippableVideoCallbacks(listener));
-        }
-
         public void setRewardedVideoCallbacks(IRewardedVideoAdListener listener)
         {
             getAppodealClass().CallStatic("setRewardedVideoCallbacks", new AppodealRewardedVideoCallbacks(listener));
@@ -525,6 +544,85 @@ namespace AppodealAds.Unity.Android
         public bool isAutoCacheEnabled(int adType)
         {
             return  getAppodealClass().CallStatic<bool>("isAutoCacheEnabled", nativeAdTypesForType(adType));
+        }
+
+        public void logEvent(string eventName, Dictionary<string, object> eventParams)
+        {
+            if (eventParams == null)
+            {
+                getAppodealClass().CallStatic("logEvent", eventName, null);
+            }
+            else
+            {
+                var paramsFiltered = new Dictionary<string, object>();
+
+                eventParams.Keys.Where(key => eventParams[key] is int || eventParams[key] is double || eventParams[key] is string)
+                    .ToList().ForEach(key => paramsFiltered.Add(key, eventParams[key]));
+
+                var map = new AndroidJavaObject("java.util.HashMap");
+                
+                foreach (var entry in paramsFiltered)
+                {
+                    map.Call<AndroidJavaObject>("put", entry.Key, Helper.getJavaObject(entry.Value));
+                }
+
+                getAppodealClass().CallStatic("logEvent", eventName, map);
+            }
+        }
+
+        public void validatePlayStoreInAppPurchase(IPlayStoreInAppPurchase purchase, IInAppPurchaseValidationListener listener)
+        {
+            var androidPurchase = purchase.NativeInAppPurchase as AndroidPlayStoreInAppPurchase;
+            if (androidPurchase == null) return;
+            getAppodealClass().CallStatic("validateInAppPurchase", getActivity(), androidPurchase.getInAppPurchase(), new InAppPurchaseValidationCallbacks(listener));
+        }
+
+        public void validateAppStoreInAppPurchase(IAppStoreInAppPurchase purchase, IInAppPurchaseValidationListener listener)
+        {
+            Debug.Log("Not supported on Android platform");
+        }
+    }
+
+    public static class Helper
+    {
+        public static object getJavaObject(object value)
+        {
+            if (value is string)
+            {
+                return value;
+            }
+
+            if (value is char)
+            {
+                return new AndroidJavaObject("java.lang.Character", value);
+            }
+
+            if (value is bool)
+            {
+                return new AndroidJavaObject("java.lang.Boolean", value);
+            }
+
+            if (value is int)
+            {
+                return new AndroidJavaObject("java.lang.Integer", value);
+            }
+
+            if (value is long)
+            {
+                return new AndroidJavaObject("java.lang.Long", value);
+            }
+
+            if (value is float)
+            {
+                return new AndroidJavaObject("java.lang.Float", value);
+            }
+
+            if (value is double)
+            {
+                return new AndroidJavaObject("java.lang.Float", value);
+            }
+
+            return null;
         }
     }
 }

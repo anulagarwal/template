@@ -24,8 +24,7 @@ namespace ConsentManager.Common
     public interface IConsentForm
     {
         void load();
-        void showAsActivity();
-        void showAsDialog();
+        void show();
         bool isLoaded();
         bool isShowing();
     }
@@ -53,14 +52,6 @@ namespace ConsentManager.Common
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "UnusedParameter.Global")]
-    public interface IConsentFormBuilder
-    {
-        IConsentForm build();
-        void withListener(IConsentFormListener consentFormListener);
-    }
-
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
-    [SuppressMessage("ReSharper", "UnusedParameter.Global")]
     public interface IConsent
     {
         Consent.Zone getZone();
@@ -76,5 +67,4 @@ namespace ConsentManager.Common
         string getReason();
         int getCode();
     }
-    
 }

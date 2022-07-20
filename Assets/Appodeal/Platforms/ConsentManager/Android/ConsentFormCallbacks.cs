@@ -11,13 +11,12 @@ namespace ConsentManager.Platforms.Android
     {
         private readonly IConsentFormListener listener;
 
-        internal ConsentFormCallbacks(IConsentFormListener listener) : base(
-            "com.explorestack.consent.ConsentFormListener")
+        internal ConsentFormCallbacks(IConsentFormListener listener) : base("com.appodeal.consent.IConsentFormListener")
         {
             this.listener = listener;
         }
 
-        private void onConsentFormLoaded()
+        private void onConsentFormLoaded(UnityEngine.AndroidJavaObject consentForm)
         {
             listener.onConsentFormLoaded();
         }
@@ -41,9 +40,7 @@ namespace ConsentManager.Platforms.Android
     }
 #else
     {
-        public ConsentFormCallbacks(IConsentFormListener listener)
-        {
-        }
+        public ConsentFormCallbacks(IConsentFormListener listener) { }
     }
 #endif
 }

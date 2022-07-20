@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56a848d419e0e4a03bbbd903aae25347, type: 3}
+  m_Script: {fileID: 11500000, guid: 9403d56c027e8442284a59449c4f1002, type: 3}
   m_Name: AppodealSettings
   m_EditorClassIdentifier: 
   adMobAndroidAppId: 
@@ -28,43 +28,10 @@ MonoBehaviour:
   iOsskAdNetworkItemsList:
   - v9wttpbfk9.skadnetwork
   - n38lu8286q.skadnetwork
-  - su67r6k2v3.skadnetwork
-  - kbd757ywx3.skadnetwork
-  - 3rd42ekr43.skadnetwork
-  - tl55sbb4fm.skadnetwork
-  - 2u9pt9hc89.skadnetwork
-  - 8s468mfl3y.skadnetwork
-  - glqzh8vgby.skadnetwork
-  - n9x2a789qt.skadnetwork
-  - prcb7njmu6.skadnetwork
-  - v72qych5uu.skadnetwork
-  - mlmmfzh3r3.skadnetwork
-  - c6k4g5qg8m.skadnetwork
-  - 22mmun2rn5.skadnetwork
-  - yclnxrl5pm.skadnetwork
-  - t38b2kh725.skadnetwork
-  - 7ug5zh24hu.skadnetwork
-  - 5lm9lj6jb7.skadnetwork
-  - 9t245vhmpl.skadnetwork
-  - n9x2a789qt.skadnetwork
-  - 4fzdc2evr5.skadnetwork
-  - gta8lk7p23.skadnetwork
-  - ydx93a7ass.skadnetwork
   - v9wttpbfk9.skadnetwork
   - n38lu8286q.skadnetwork
-  - 5l3tpt7t6e.skadnetwork
-  - mlmmfzh3r3.skadnetwork
-  - hs6bdukanm.skadnetwork
-  - t38b2kh725.skadnetwork
-  - 5lm9lj6jb7.skadnetwork
-  - v72qych5uu.skadnetwork
-  - k674qkevps.skadnetwork
-  - tl55sbb4fm.skadnetwork
-  - ppxm28t8ap.skadnetwork
-  - 97r2b46745.skadnetwork
-  - zq492l623r.skadnetwork
-  - a2p9lx4jpn.skadnetwork
-  - ludvb6z3bs.skadnetwork
+  - su67r6k2v3.skadnetwork
+  - kbd757ywx3.skadnetwork
   - 5l3tpt7t6e.skadnetwork
   - mlmmfzh3r3.skadnetwork
   - hs6bdukanm.skadnetwork
@@ -97,8 +64,41 @@ MonoBehaviour:
   - 4fzdc2evr5.skadnetwork
   - gta8lk7p23.skadnetwork
   - ydx93a7ass.skadnetwork
+  - ludvb6z3bs.skadnetwork
   - n9x2a789qt.skadnetwork
   - r26jy69rpl.skadnetwork
+  - 5l3tpt7t6e.skadnetwork
+  - mlmmfzh3r3.skadnetwork
+  - hs6bdukanm.skadnetwork
+  - t38b2kh725.skadnetwork
+  - 5lm9lj6jb7.skadnetwork
+  - v72qych5uu.skadnetwork
+  - k674qkevps.skadnetwork
+  - tl55sbb4fm.skadnetwork
+  - ppxm28t8ap.skadnetwork
+  - 97r2b46745.skadnetwork
+  - zq492l623r.skadnetwork
+  - a2p9lx4jpn.skadnetwork
+  - 3rd42ekr43.skadnetwork
+  - tl55sbb4fm.skadnetwork
+  - 2u9pt9hc89.skadnetwork
+  - 8s468mfl3y.skadnetwork
+  - glqzh8vgby.skadnetwork
+  - n9x2a789qt.skadnetwork
+  - prcb7njmu6.skadnetwork
+  - v72qych5uu.skadnetwork
+  - mlmmfzh3r3.skadnetwork
+  - c6k4g5qg8m.skadnetwork
+  - 22mmun2rn5.skadnetwork
+  - yclnxrl5pm.skadnetwork
+  - t38b2kh725.skadnetwork
+  - 7ug5zh24hu.skadnetwork
+  - 5lm9lj6jb7.skadnetwork
+  - 9t245vhmpl.skadnetwork
+  - n9x2a789qt.skadnetwork
+  - 4fzdc2evr5.skadnetwork
+  - gta8lk7p23.skadnetwork
+  - ydx93a7ass.skadnetwork
   - uw77j35x4d.skadnetwork
   - 7ug5zh24hu.skadnetwork
   - hs6bdukanm.skadnetwork
@@ -244,58 +244,6 @@ MonoBehaviour:
   - gta9lk7p23.skadnetwork
   - r45fhb6rf7.skadnetwork
   - 3rd42ekr43.skadnetwork
-  - w9q455wk68.skadnetwork
-  - lr83yxwka7.skadnetwork
-  - 4dzt52r2t5.skadnetwork
-  - 7ug5zh24hu.skadnetwork
-  - 238da6jt44.skadnetwork
-  - glqzh8vgby.skadnetwork
-  - m8dbw4sv7c.skadnetwork
-  - f7s53z58qe.skadnetwork
-  - 4fzdc2evr5.skadnetwork
-  - ppxm28t8ap.skadnetwork
-  - v79kvwwj4g.skadnetwork
-  - 424m5254lk.skadnetwork
-  - cstr6suwn9.skadnetwork
-  - 5a6flpkh64.skadnetwork
-  - v72qych5uu.skadnetwork
-  - 3rd42ekr43.skadnetwork
-  - yclnxrl5pm.skadnetwork
-  - 488r3q3dtq.skadnetwork
-  - 22mmun2rn5.skadnetwork
-  - 4pfyvq9l8r.skadnetwork
-  - 8s468mfl3y.skadnetwork
-  - c6k4g5qg8m.skadnetwork
-  - ydx93a7ass.skadnetwork
-  - kbd757ywx3.skadnetwork
-  - hs6bdukanm.skadnetwork
-  - 44jx6755aq.skadnetwork
-  - 5lm9lj6jb7.skadnetwork
-  - 2u9pt9hc89.skadnetwork
-  - 294l99pt4k.skadnetwork
-  - zmvfpc5aq8.skadnetwork
-  - 578prtvx9j.skadnetwork
-  - tl55sbb4fm.skadnetwork
-  - t38b2kh725.skadnetwork
-  - f73kdq92p3.skadnetwork
-  - prcb7njmu6.skadnetwork
-  - 4468km3ulz.skadnetwork
-  - s39g8k73mm.skadnetwork
-  - f38h382jlk.skadnetwork
-  - 5tjdwbrq8w.skadnetwork
-  - mlmmfzh3r3.skadnetwork
-  - 32z4fx6l9h.skadnetwork
-  - 3qy4746246.skadnetwork
-  - x44k69ngh6.skadnetwork
-  - wg4vff78zm.skadnetwork
-  - wzmmz9fp6w.skadnetwork
-  - 3sh42y64q3.skadnetwork
-  - zq492l623r.skadnetwork
-  - av6w8kgt66.skadnetwork
-  - k674qkevps.skadnetwork
-  - 9rd848q2bz.skadnetwork
-  - 9t245vhmpl.skadnetwork
-  - mp6xlyr22a.skadnetwork
   - wg4vff78zm.skadnetwork
   - 737z793b9f.skadnetwork
   - ydx93a7ass.skadnetwork
@@ -550,6 +498,59 @@ MonoBehaviour:
   - c3frkrj4fj.skadnetwork
   - a2p9lx4jpn.skadnetwork
   - 3rd42ekr43.skadnetwork
+  - av6w8kgt66.skadnetwork
+  - mlmmfzh3r3.skadnetwork
+  - 5a6flpkh64.skadnetwork
+  - 4dzt52r2t5.skadnetwork
+  - 8s468mfl3y.skadnetwork
+  - hs6bdukanm.skadnetwork
+  - yclnxrl5pm.skadnetwork
+  - s39g8k73mm.skadnetwork
+  - w9q455wk68.skadnetwork
+  - 4pfyvq9l8r.skadnetwork
+  - x44k69ngh6.skadnetwork
+  - mp6xlyr22a.skadnetwork
+  - v79kvwwj4g.skadnetwork
+  - 424m5254lk.skadnetwork
+  - ydx93a7ass.skadnetwork
+  - cstr6suwn9.skadnetwork
+  - prcb7njmu6.skadnetwork
+  - glqzh8vgby.skadnetwork
+  - 294l99pt4k.skadnetwork
+  - 44jx6755aq.skadnetwork
+  - f7s53z58qe.skadnetwork
+  - c6k4g5qg8m.skadnetwork
+  - 3rd42ekr43.skadnetwork
+  - 9t245vhmpl.skadnetwork
+  - 9rd848q2bz.skadnetwork
+  - 22mmun2rn5.skadnetwork
+  - f73kdq92p3.skadnetwork
+  - kbd757ywx3.skadnetwork
+  - zq492l623r.skadnetwork
+  - 238da6jt44.skadnetwork
+  - 488r3q3dtq.skadnetwork
+  - 7ug5zh24hu.skadnetwork
+  - 32z4fx6l9h.skadnetwork
+  - wzmmz9fp6w.skadnetwork
+  - 3qy4746246.skadnetwork
+  - 5tjdwbrq8w.skadnetwork
+  - v72qych5uu.skadnetwork
+  - 4fzdc2evr5.skadnetwork
+  - lr83yxwka7.skadnetwork
+  - 578prtvx9j.skadnetwork
+  - 4w7y6s5ca2.skadnetwork
+  - tl55sbb4fm.skadnetwork
+  - k674qkevps.skadnetwork
+  - t38b2kh725.skadnetwork
+  - 5lm9lj6jb7.skadnetwork
+  - 2u9pt9hc89.skadnetwork
+  - f38h382jlk.skadnetwork
+  - 4468km3ulz.skadnetwork
+  - 3sh42y64q3.skadnetwork
+  - ppxm28t8ap.skadnetwork
+  - m8dbw4sv7c.skadnetwork
+  - zmvfpc5aq8.skadnetwork
+  - wg4vff78zm.skadnetwork
   - uw77j35x4d.skadnetwork
   - 7ug5zh24hu.skadnetwork
   - hs6bdukanm.skadnetwork

@@ -18,34 +18,37 @@ namespace AppodealAds.Unity.Android
 
         private void onBannerLoaded(int height, bool isPrecache)
         {
-            listener.onBannerLoaded(height,isPrecache);
+            listener?.onBannerLoaded(height,isPrecache);
         }
 
         private void onBannerFailedToLoad()
         {
-            listener.onBannerFailedToLoad();
+            listener?.onBannerFailedToLoad();
         }
 
         private void onBannerShown()
         {
-            listener.onBannerShown();
+            listener?.onBannerShown();
+        }
+
+        private void onBannerShowFailed()
+        {
+            listener?.onBannerShowFailed();
         }
 
         private void onBannerClicked()
         {
-            listener.onBannerClicked();
+            listener?.onBannerClicked();
         }
 
         private void onBannerExpired()
         {
-            listener.onBannerExpired();
+            listener?.onBannerExpired();
         }
     }
 #else
     {
-        public AppodealBannerCallbacks(IBannerAdListener listener)
-        {
-        }
+        public AppodealBannerCallbacks(IBannerAdListener listener) { }
     }
 #endif
 }

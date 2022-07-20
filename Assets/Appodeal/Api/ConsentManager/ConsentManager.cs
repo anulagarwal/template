@@ -89,9 +89,14 @@ namespace ConsentManager
     {
         private readonly IConsentForm nativeConsentForm;
 
-        private ConsentForm(IConsentForm builder)
+        private ConsentForm(IConsentFormListener listener)
         {
-            nativeConsentForm = builder;
+            nativeConsentForm = ConsentManagerClientFactory.GetConsentForm(listener);
+        }
+
+        public static ConsentForm GetInstance(IConsentFormListener listener)
+        {
+            return new ConsentForm(listener);
         }
 
         public IConsentForm GetNativeConsent()
@@ -104,14 +109,9 @@ namespace ConsentManager
             nativeConsentForm.load();
         }
 
-        public void showAsActivity()
+        public void show()
         {
-            nativeConsentForm.showAsActivity();
-        }
-
-        public void showAsDialog()
-        {
-            nativeConsentForm.showAsDialog();
+            nativeConsentForm.show();
         }
 
         public bool isLoaded()
@@ -122,27 +122,6 @@ namespace ConsentManager
         public bool isShowing()
         {
             return nativeConsentForm.isShowing();
-        }
-
-        public class Builder
-        {
-            private readonly IConsentFormBuilder nativeConsentFormBuilder;
-
-            public Builder()
-            {
-                nativeConsentFormBuilder = ConsentManagerClientFactory.GetConsentFormBuilder();
-            }
-
-            public ConsentForm build()
-            {
-                return new ConsentForm(nativeConsentFormBuilder.build());
-            }
-
-            public Builder withListener(IConsentFormListener consentFormListener)
-            {
-                nativeConsentFormBuilder.withListener(consentFormListener);
-                return this;
-            }
         }
     }
 
@@ -184,7 +163,7 @@ namespace ConsentManager
                 return this;
             }
 
-            public Builder setFeatureId(IEnumerable<int> featureIds)
+            public Builder setFeatureIds(IEnumerable<int> featureIds)
             {
                 nativeVendorBuilder.setFeatureIds(featureIds);
                 return this;
