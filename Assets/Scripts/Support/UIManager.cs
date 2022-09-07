@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
         inGameLevelText.text = "LEVEL " + level;
     }
 
- public void OnClickPlayButton()
+    public void OnClickPlayButton()
     {
         GameManager.Instance.StartLevel();
     }

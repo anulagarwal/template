@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using com.adjust.sdk;
 using UnityEngine;
 using Voodoo.Sauce.Internal.Analytics;
@@ -13,11 +16,27 @@ namespace Voodoo.Sauce.Internal
         private static TinySauceBehaviour _instance;
         private TinySauceSettings _sauceSettings;
         private bool _advertiserTrackingEnabled;
+        private static IABTestManager aBTestManager;
+
+        public static IABTestManager ABTestManager => aBTestManager;
 
 
         private void Awake()
         {
+            if (_instance == null)
+            {
+                _instance = this;
+                DontDestroyOnLoad(this);
+            }
+            else
+            {
+                Destroy(this);
+                return;
+            }
+            
             VoodooLog.Initialize(VoodooLogLevel.WARNING);
+            
+            InitABTest();
             
             #if UNITY_IOS
 
@@ -36,24 +55,14 @@ namespace Voodoo.Sauce.Internal
                 InitAnalytics();
                 GetComponent<Adjust>().InitAdjust(); // GetComponent to be removed from here in future releases
             #endif
-            
+
             if (transform != transform.root)
                 throw new Exception("TinySauce prefab HAS to be at the ROOT level!");
 
             _sauceSettings = TinySauceSettings.Load();
             if (_sauceSettings == null)
                 throw new Exception("Can't find TinySauce sauceSettings file.");
-            
-            if (_instance != null) {
-                Destroy(gameObject);
-                return;
-            }
 
-            _instance = this;
-            DontDestroyOnLoad(this);
-            
-            
-            
         }
         
 
@@ -94,6 +103,21 @@ namespace Voodoo.Sauce.Internal
             }
         }
 
+        private void InitABTest() //All initializations should be done like this. Would be useful for module/sdk addition/removal
+        {
+            if(GetAbTestingManager().Count == 0) return;
+            aBTestManager = (IABTestManager) Activator.CreateInstance(GetAbTestingManager()[0]);
+            aBTestManager.Init();
+        }
+
+        private static List<Type> GetAbTestingManager()
+        {
+            Type interfaceType = typeof(IABTestManager);
+            List<Type> AbTest = GetTypes(interfaceType);
+
+            return AbTest;
+        }
+
         private void InitAnalytics()
         {
             VoodooLog.Log(TAG, "Initializing Analytics");
@@ -115,6 +139,24 @@ namespace Voodoo.Sauce.Internal
             if (!pauseStatus) {
                 AnalyticsManager.OnApplicationResume();
             }
+        }
+        
+        internal static void InvokeCoroutine(IEnumerator coroutine)
+        {
+            if (_instance == null) return;
+            _instance.StartCoroutine(coroutine);
+        }
+        
+        private static List<Type> GetTypes(Type toGetType)
+        {
+            List<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => toGetType.IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract)
+                .ToList();
+
+            types.Sort((x, y) => string.Compare(x.Name, y.Name, StringComparison.Ordinal));
+
+            return types;
         }
     }
 }

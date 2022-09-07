@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Component Reference")]
     [SerializeField] public GameObject confetti;
+    [SerializeField] public List<MonoBehaviour> objectsToDisable;
 
     [Header("Game Attributes")]
     [SerializeField] private int currentScore;
     [SerializeField] private int currentLevel;
-    [SerializeField] private int maxLevels;
     [SerializeField] public GameState currentState;
 
     #endregion
@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         currentLevel = PlayerPrefs.GetInt("level", 1);       
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
-        maxLevels = 1;     
     }
 
     #endregion
@@ -60,6 +59,11 @@ public class GameManager : MonoBehaviour
 
             PlayerPrefs.SetInt("level", currentLevel + 1);
             currentLevel++;
+
+            foreach(MonoBehaviour m in objectsToDisable)
+            {
+                m.enabled = false;
+            }
         }
     }
 
@@ -69,6 +73,10 @@ public class GameManager : MonoBehaviour
         {
             Invoke("ShowLoseUI", 2f);
             currentState = GameState.Lose;
+            foreach (MonoBehaviour m in objectsToDisable)
+            {
+                m.enabled = false;
+            }
         }
     }
 
@@ -78,19 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeLevel()
     {
-        if (currentLevel > maxLevels)
-        {
-            int newId = currentLevel % maxLevels;
-            if (newId == 0)
-            {
-                newId = maxLevels;
-            }
-            SceneManager.LoadScene("Level " + (newId));
-        }
-        else
-        {
-            SceneManager.LoadScene("Level " + currentLevel);
-        }
+            SceneManager.LoadScene("Core");       
     }
 
     #endregion

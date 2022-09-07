@@ -63,12 +63,12 @@ dependencies {
     implementation 'com.explorestack.adjust:sdk-purchase:1.1.2' // Assets/Appodeal/Editor/NetworkConfigs/AdjustDependencies.xml:12
     implementation 'com.explorestack:iab:0.9.8' // Assets/Appodeal/Editor/NetworkConfigs/AppodealDependencies.xml:13
     implementation 'com.facebook.android:audience-network-sdk:6.11.0' // Assets/Appodeal/Editor/NetworkConfigs/MetaAudienceNetworkDependencies.xml:14
-    implementation 'com.facebook.android:facebook-applinks:[11.0, 12)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:6
-    // implementation 'com.facebook.android:facebook-core:[11.0, 12)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:5
+    implementation 'com.facebook.android:facebook-applinks:[14.1, 15)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:6
+    // implementation 'com.facebook.android:facebook-core:[14.1, 15)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:5
     implementation 'com.facebook.android:facebook-core:13.2.0' // Assets/Appodeal/Editor/NetworkConfigs/MetaDependencies.xml:12
-    implementation 'com.facebook.android:facebook-gamingservices:[11.0, 12)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:9
-    implementation 'com.facebook.android:facebook-login:[11.0, 12)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:7
-    implementation 'com.facebook.android:facebook-share:[11.0, 12)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:8
+    implementation 'com.facebook.android:facebook-gamingservices:[14.1, 15)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:9
+    implementation 'com.facebook.android:facebook-login:[14.1, 15)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:7
+    implementation 'com.facebook.android:facebook-share:[14.1, 15)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:8
     implementation 'com.google.android.gms:play-services-ads:21.0.0' // Assets/Appodeal/Editor/NetworkConfigs/GoogleAdMobDependencies.xml:14
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1' // Assets/Appodeal/Editor/NetworkConfigs/VungleDependencies.xml:13
     implementation 'com.google.android.gms:play-services-appset:16.0.2' // Assets/VoodooPackages/TinySauce/Analytics/GameAnalytics/3rdParty/GameAnalytics/Editor/Android/Dependencies.xml:4
