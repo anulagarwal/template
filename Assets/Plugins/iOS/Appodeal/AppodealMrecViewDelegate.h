@@ -10,7 +10,6 @@ typedef void (*AppodealMrecViewDidLoadCallback) ();
 @property (assign, nonatomic) AppodealMrecViewCallbacks mrecViewDidFailToLoadAdCallback;
 @property (assign, nonatomic) AppodealMrecViewCallbacks mrecViewDidClickCallback;
 @property (assign, nonatomic) AppodealMrecViewCallbacks mrecViewDidShowCallback;
-@property (assign, nonatomic) AppodealMrecViewCallbacks mrecViewDidFailToPresentCallback;
 @property (assign, nonatomic) AppodealMrecViewCallbacks mrecViewDidExpiredCallback;
 
 @end

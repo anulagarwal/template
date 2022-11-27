@@ -37,12 +37,6 @@
     }
 }
 
-- (void)bannerView:(APDBannerView *)bannerView didFailToPresentWithError:(NSError *)error {
-    if (self.mrecViewDidFailToPresentCallback) {
-        self.mrecViewDidFailToPresentCallback();
-    }
-}
-
 - (void)bannerViewExpired:(APDBannerView *)bannerView {
     if (self.mrecViewDidExpiredCallback) {
         self.mrecViewDidExpiredCallback();
@@ -59,5 +53,6 @@
         UnitySetViewTouchProcessing(view, touchesTransformedToUnityViewCoords);
     }
 }
+
 
 @end

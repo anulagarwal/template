@@ -37,12 +37,6 @@
     }
 }
 
-- (void)bannerView:(APDBannerView *)bannerView didFailToPresentWithError:(NSError *)error {
-    if (self.bannerViewDidFailToPresentCallback) {
-        self.bannerViewDidFailToPresentCallback();
-    }
-}
-
 - (void)bannerViewExpired:(APDBannerView *)bannerView{
     if (self.bannerViewDidExpiredCallback) {
         self.bannerViewDidExpiredCallback();

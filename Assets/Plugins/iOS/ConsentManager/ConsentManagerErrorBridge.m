@@ -1,3 +1,4 @@
+
 #if defined(__has_include) && __has_include("UnityAppController.h")
 #import "UnityAppController.h"
 #else
@@ -28,6 +29,7 @@
 
 @end
 
+
 ConsentManagerErrorBridge *GetConsentManagerException(void) {
     return GetCurrentErrorBridge();
     
@@ -42,3 +44,4 @@ const char *GetReason() {
 int GetCode() {
     return (int)GetCurrentErrorBridge().code;
 }
+

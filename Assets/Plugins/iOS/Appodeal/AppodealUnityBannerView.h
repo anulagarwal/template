@@ -5,7 +5,7 @@
 + (instancetype)sharedInstance;
 UIViewController* RootViewControllerUnityBannerView(void);
 - (id)init;
-- (void)didReceiveNotification;
+- (void)didRecieveNotification;
 - (void)setSharedBannerFrame:(CGFloat)XAxis YAxis:(CGFloat)YAxis;
 - (void)hideBannerView;
 - (void)showBannerView:(UIViewController*)rootViewController XAxis:(CGFloat)XAxis YAxis:(CGFloat)YAxis placement:(NSString*)placement;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Momo;
 public class GameManager : MonoBehaviour
 {
     #region Properties
@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int currentScore;
     [SerializeField] private int currentLevel;
     [SerializeField] public GameState currentState;
+    [SerializeField] public int numberOfMoves;
+    [SerializeField] public float levelLength;
+
+    float levelStartTime;
 
     #endregion
 
@@ -32,7 +36,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //SwitchCamera(CameraType.MatchStickCamera);
         currentLevel = PlayerPrefs.GetInt("level", 1);       
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
@@ -45,8 +48,14 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);       
         currentState = GameState.InGame;
+        Analytics.Instance.StartLevel(currentLevel);
+        levelStartTime = Time.time;
     }
- 
+
+    public void AddMove(int v)
+    {
+        numberOfMoves += v;
+    }
 
     public void WinLevel()
     {
@@ -64,6 +73,13 @@ public class GameManager : MonoBehaviour
             {
                 m.enabled = false;
             }
+            levelLength = Time.time - levelStartTime;
+            PlayerLevelData pld = new PlayerLevelData();
+            pld.Init(currentLevel, 0, true, numberOfMoves, levelLength);
+            PlayerManager.Instance.AddLevelData(pld);
+            //Send Data
+            Analytics.Instance.WinLevel();
+
         }
     }
 
@@ -77,6 +93,12 @@ public class GameManager : MonoBehaviour
             {
                 m.enabled = false;
             }
+            levelLength = Time.time - levelStartTime;
+            PlayerLevelData pld = new PlayerLevelData();
+            pld.Init(currentLevel, 1, false, numberOfMoves, levelLength);
+            PlayerManager.Instance.AddLevelData(pld);
+            //Send Data
+            Analytics.Instance.LoseLevel();
         }
     }
 
@@ -93,6 +115,11 @@ public class GameManager : MonoBehaviour
 
 
     #region Public Core Functions
+
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
+    }
 
     public void AddScore(int value)
     {

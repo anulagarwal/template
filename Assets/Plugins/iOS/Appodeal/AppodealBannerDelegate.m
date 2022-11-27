@@ -51,12 +51,6 @@
     }
 }
 
--(void) bannerDidFailToPresentWithError:(NSError *)error {
-    if (self.bannerDidFailToPresentCallback) {
-        self.bannerDidFailToPresentCallback();
-    }
-}
-
 - (void)bannerDidClick {
     if (self.bannerDidClickCallback) {
         self.bannerDidClickCallback();

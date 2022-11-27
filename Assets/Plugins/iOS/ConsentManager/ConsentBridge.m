@@ -1,3 +1,4 @@
+
 #if defined(__has_include) && __has_include("UnityAppController.h")
 #import "UnityAppController.h"
 #else
@@ -26,7 +27,7 @@ const char *GetStatus(void) {
     }
 }
 
-const char *GetIabString(void) {
+const char *GetIabConsentString(void) {
     if(STKConsentManager.sharedManager.iabConsentString == NULL){
         return GetChar(@"EMPTY");
     }

@@ -12,10 +12,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject PointText;
     [SerializeField] private GameObject AwesomeText;
-    [SerializeField] private GameObject JoyStick;
-
-
-
+    [SerializeField] private GameObject JoyStick;  
 
     [Header("UI Panel")]
     [SerializeField] private GameObject mainMenuUIPanel = null;
@@ -25,7 +22,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText = null;
     [SerializeField] private Text mainLevelText = null;
     [SerializeField] private Text inGameLevelText = null;
+    [SerializeField] private Text winLevelText = null;
+    [SerializeField] private Text loseLevelText = null;
+    [SerializeField] private Text debugText = null;
 
+
+    [Header("Reward/Coins")]
+    [SerializeField] List<Text> allCurrentCoins = null;
+
+    [Header("Post Level")]
+    [SerializeField] Button multiplyReward;
+    [SerializeField] Text multiplyText;
+    [SerializeField] Text levelReward;
+
+
+    [Header("Daily")]
+    [SerializeField] Button dailyReward;
+    [SerializeField] Text dailyText;
 
 
 
@@ -88,11 +101,37 @@ public class UIManager : MonoBehaviour
         scoreText.text = "" + value;
     }
 
+    public void UpdateDebugText(string s)
+    {
+        debugText.text = s;
+    }
     public void UpdateLevel(int level)
     {
         mainLevelText.text = "LEVEL " + level;
         inGameLevelText.text = "LEVEL " + level;
+        winLevelText.text = "LEVEL " + level;
+        loseLevelText.text = "LEVEL " + level;
+
     }
+
+    public void UpdateCurrentCoins(int v)
+    {
+        foreach(Text t in allCurrentCoins)
+        {
+            t.text = v + "";
+        }
+    }
+
+    public void UpdateLevelReward(int v)
+    {
+        levelReward.text ="+"+ v + "";
+    }
+
+    #region Give Rewards
+
+    #endregion
+
+    #region OnClickUIButtons    
 
     public void OnClickPlayButton()
     {
@@ -103,6 +142,18 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.ChangeLevel();
     }
+
+    public void OnClickMove()
+    {
+        GameManager.Instance.AddMove(1);
+    }
+
+    public void OnClickWin()
+    {
+        GameManager.Instance.WinLevel();
+    }
+
+    #endregion
 
 
     public void SpawnPointText(Vector3 point)

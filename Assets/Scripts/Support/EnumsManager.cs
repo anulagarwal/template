@@ -33,6 +33,26 @@ public enum Sound
     Lose
 }
 
+public enum AdType
+{
+    Appodeal,
+    GD,
+    None
+}
+
+public enum RewardType
+{
+    Daily,
+    WinMultiply
+}
+
+public enum PlayerType
+{
+    Noob,
+    Average,
+    Pro
+}
+
 public enum TileState
 {
 
