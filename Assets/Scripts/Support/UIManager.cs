@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
+
 public class UIManager : MonoBehaviour
 {
     #region Properties
@@ -25,6 +27,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text winLevelText = null;
     [SerializeField] private Text loseLevelText = null;
     [SerializeField] private Text debugText = null;
+
+
+    [Header("Settings")]
+    [SerializeField] private GameObject settingsBox;
+
+    [SerializeField] private Sprite enabledVibration;
+    [SerializeField] private Sprite disabledVibration;
+    [SerializeField] private Sprite disabledSFX;
+    [SerializeField] private Sprite enabledSFX;
+    [SerializeField] private Button SFX;
+    [SerializeField] private Button vibration;
 
 
     [Header("Reward/Coins")]
@@ -57,6 +70,25 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         //SwitchControls(Controls.Touch);
+
+        if (PlayerPrefs.GetInt("vibrate", 1) == 0)
+        {
+            vibration.image.sprite = disabledVibration;
+        }
+        else
+        {
+            vibration.image.sprite = enabledVibration;
+        }
+
+        if (PlayerPrefs.GetInt("sound", 1) == 0)
+        {
+            SFX.image.sprite = disabledSFX;
+        }
+        else
+        {
+            SFX.image.sprite = enabledSFX;
+        }
+
     }
     #endregion
 
@@ -151,6 +183,40 @@ public class UIManager : MonoBehaviour
     public void OnClickWin()
     {
         GameManager.Instance.WinLevel();
+    }
+
+    public void OnClickSFXButton()
+    {
+        if (PlayerPrefs.GetInt("sound", 1) == 1)
+        {
+            PlayerPrefs.SetInt("sound", 0);
+            SFX.image.sprite = disabledSFX;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("sound", 1);
+            SFX.image.sprite = enabledSFX;
+        }
+    }
+
+    public void OnClickVibrateButton()
+    {
+
+        if (PlayerPrefs.GetInt("vibrate", 1) == 1)
+        {
+            PlayerPrefs.SetInt("vibrate", 0);
+            vibration.image.sprite = disabledVibration;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("vibrate", 1);
+            vibration.image.sprite = enabledVibration;
+        }
+    }
+
+    public void OnClickSettingsButton()
+    {
+        settingsBox.SetActive(!settingsBox.activeSelf);
     }
 
     #endregion

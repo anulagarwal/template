@@ -76,6 +76,15 @@ public class GameManager : MonoBehaviour
             levelLength = Time.time - levelStartTime;
             PlayerLevelData pld = new PlayerLevelData();
             pld.Init(currentLevel, 0, true, numberOfMoves, levelLength);
+
+            if (currentLevel == 5)
+            {
+                if (PlayerPrefs.GetInt("review", 0) == 0)
+                {
+                    GetComponent<ReviewsManager>().Request();
+                    PlayerPrefs.SetInt("review", 1);
+                }
+            }
             PlayerManager.Instance.AddLevelData(pld);
             //Send Data
             Analytics.Instance.WinLevel();
