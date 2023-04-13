@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.facebook.android:facebook-share:[14.1, 15)' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:8
     implementation 'com.google.android.gms:play-services-appset:16.0.2' // Assets/VoodooPackages/TinySauce/Analytics/GameAnalytics/3rdParty/GameAnalytics/Editor/Android/Dependencies.xml:4
     implementation 'com.google.android.instantapps:instantapps:1.1.0' // Assets/VoodooPackages/TinySauce/Analytics/GameAnalytics/3rdParty/GameAnalytics/Editor/Android/Dependencies.xml:3
+    implementation 'com.google.android.play:core-common:2.0.0' // Assets/GooglePlayPlugins/com.google.play.core/Editor/Dependencies.xml:3
+    implementation 'com.google.android.play:review:2.0.0' // Assets/GooglePlayPlugins/com.google.play.review/Editor/Dependencies.xml:3
     implementation 'com.parse.bolts:bolts-android:1.4.0' // Assets/VoodooPackages/TinySauce/Analytics/Facebook/3rdParty/FacebookSDK/Plugins/Editor/Dependencies.xml:4
 // Android Resolver Dependencies End
     **DEPS**

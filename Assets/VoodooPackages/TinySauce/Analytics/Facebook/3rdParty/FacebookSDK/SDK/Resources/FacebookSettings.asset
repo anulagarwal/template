@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - 1835273086643096
+  - 00fecdc1d6bf4c669178993ee6f2d66f
   appIds:
-  - 1835273086643096
+  - 159270656980394
   appLabels:
-  - Template HC
+  - Game 1
   cookie: 1
   logging: 1
   status: 1

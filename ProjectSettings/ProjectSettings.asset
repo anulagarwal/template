@@ -159,7 +159,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.momo.templ
+    Android: com.momo.squishy.cat
     Standalone: com.DefaultCompany.Fillball
   buildNumber:
     Standalone: 0
@@ -808,6 +808,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Android: VS_ATT;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
+    Standalone: MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

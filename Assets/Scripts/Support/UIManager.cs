@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button dailyReward;
     [SerializeField] Text dailyText;
 
-
+    Transform coinBarPos;
 
     #endregion
 

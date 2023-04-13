@@ -12,12 +12,14 @@
     <package>com.facebook.android:facebook-share:[14.1, 15)</package>
     <package>com.google.android.gms:play-services-appset:16.0.2</package>
     <package>com.google.android.instantapps:instantapps:1.1.0</package>
+    <package>com.google.android.play:core-common:2.0.0</package>
+    <package>com.google.android.play:review:2.0.0</package>
     <package>com.parse.bolts:bolts-android:1.4.0</package>
   </packages>
   <files />
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.momo.templ" />
+    <setting name="bundleId" value="com.momo.squishy.cat" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="True" />
@@ -28,6 +30,6 @@
     <setting name="patchAndroidManifest" value="True" />
     <setting name="patchMainTemplateGradle" value="True" />
     <setting name="projectExportEnabled" value="False" />
-    <setting name="useJetifier" value="True" />
+    <setting name="useJetifier" value="False" />
   </settings>
 </dependencies>
