@@ -3,50 +3,71 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Momo;
+
 public class GameManager : MonoBehaviour
 {
-    #region Properties
-    public static GameManager Instance = null;
+    #region Singleton
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<GameManager>();
+                if (_instance == null)
+                {
+                    GameObject singleton = new GameObject("GameManager");
+                    _instance = singleton.AddComponent<GameManager>();
+                }
+            }
+            return _instance;
+        }
+    }
+    #endregion
 
+    #region Properties
     [Header("Component Reference")]
-    [SerializeField] public GameObject confetti;
-    [SerializeField] public List<MonoBehaviour> objectsToDisable;
+    [SerializeField] private GameObject confetti;
+    [SerializeField] private List<MonoBehaviour> objectsToDisable;
 
     [Header("Game Attributes")]
     [SerializeField] private int currentScore;
     [SerializeField] private int currentLevel;
-    [SerializeField] public GameState currentState;
-    [SerializeField] public int numberOfMoves;
-    [SerializeField] public float levelLength;
+    [SerializeField] private GameState currentState;
+    [SerializeField] private int numberOfMoves;
+    [SerializeField] private float levelLength;
 
-    float levelStartTime;
+    public int CurrentScore => currentScore;
+    public int CurrentLevel => currentLevel;
+    public GameState CurrentState => currentState;
 
+    private float levelStartTime;
     #endregion
 
     #region MonoBehaviour Functions
     private void Awake()
     {
-        Application.targetFrameRate = 100;
-        if (Instance != null && Instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
         }
-        Instance = this;
+        _instance = this;
+        Application.targetFrameRate = 100;
     }
 
     private void Start()
     {
-        currentLevel = PlayerPrefs.GetInt("level", 1);       
+        currentLevel = PlayerPrefs.GetInt("level", 1);
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
     }
-
     #endregion
 
-    
+    #region Level Management
     public void StartLevel()
     {
-        UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);       
+        UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);
         currentState = GameState.InGame;
         Analytics.Instance.StartLevel(currentLevel);
         levelStartTime = Time.time;
@@ -63,13 +84,13 @@ public class GameManager : MonoBehaviour
         {
             //confetti.SetActive(true);
             Invoke("ShowWinUI", 1.4f);
-          
+
             currentState = GameState.Win;
 
             PlayerPrefs.SetInt("level", currentLevel + 1);
             currentLevel++;
 
-            foreach(MonoBehaviour m in objectsToDisable)
+            foreach (MonoBehaviour m in objectsToDisable)
             {
                 m.enabled = false;
             }
@@ -111,44 +132,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    #region Scene Management
-
-
-
     public void ChangeLevel()
     {
-            SceneManager.LoadScene("Core");       
+        SceneManager.LoadScene("Core");
     }
-
     #endregion
 
-
     #region Public Core Functions
-
-    public int GetCurrentLevel()
-    {
-        return currentLevel;
-    }
-
     public void AddScore(int value)
     {
         currentScore += value;
         UIManager.Instance.UpdateScore(currentScore);
     }
-
-
     #endregion
 
     #region Invoke Functions
-
-    void ShowWinUI()
+    private void ShowWinUI()
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.GameWin);
     }
 
-    void ShowLoseUI()
+    private void ShowLoseUI()
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.GameLose);
     }
     #endregion
 }
+
+

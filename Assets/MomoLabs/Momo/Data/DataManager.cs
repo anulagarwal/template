@@ -59,7 +59,7 @@ public class DataManager : MonoBehaviour
 
             SessionData sd = new SessionData();
             float sessionLength = Time.time - sessionStartTime;
-            sd.Init(sessionNumber, sessionLength, GameManager.Instance.GetCurrentLevel());
+            sd.Init(sessionNumber, sessionLength, GameManager.Instance.CurrentLevel);
             PlayerManager.Instance.AddSessionData(sd);
 
             sessionEndTime = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;

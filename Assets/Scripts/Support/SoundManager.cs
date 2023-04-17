@@ -5,16 +5,23 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [System.Serializable]
-    public class Sounds
+    public class Sound
     {
-        public AudioClip sound;
-        public Sound type;
+        public AudioClip soundClip;
+        public SoundType type;
     }
+    public enum SoundType
+    {
+        Example1,
+        Example2,
+        // Add more sound types here
+    }
+
     public static SoundManager Instance = null;
 
-    [SerializeField] AudioSource source;
-    [SerializeField] List<Sounds> sounds;
-
+    [SerializeField] private List<Sound> sounds;
+    [SerializeField] private int poolSize = 5;
+    private Queue<AudioSource> audioSourcePool;
 
     private void Awake()
     {
@@ -24,26 +31,42 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
         Instance = this;
+
+        InitializeAudioSourcePool();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void InitializeAudioSourcePool()
     {
-        
+        audioSourcePool = new Queue<AudioSource>();
+        for (int i = 0; i < poolSize; i++)
+        {
+            AudioSource newAudioSource = gameObject.AddComponent<AudioSource>();
+            audioSourcePool.Enqueue(newAudioSource);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Play( Sound type)
+    public void Play(SoundType type)
     {
         if (PlayerPrefs.GetInt("sound", 1) == 1)
         {
-            source.clip = sounds.Find(x => x.type == type).sound;
-            source.Play();
+            AudioClip clipToPlay = sounds.Find(x => x.type == type).soundClip;
+            AudioSource availableSource = GetAvailableAudioSource();
+            availableSource.clip = clipToPlay;
+            availableSource.Play();
         }
     }
+
+    private AudioSource GetAvailableAudioSource()
+    {
+        AudioSource audioSource = audioSourcePool.Dequeue();
+
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
+        audioSourcePool.Enqueue(audioSource);
+        return audioSource;
+    }
+
 }
