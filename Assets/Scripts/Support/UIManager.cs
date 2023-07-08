@@ -42,8 +42,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText = null;
     [SerializeField] private Text mainLevelText = null;
     [SerializeField] private Text inGameLevelText = null;
-    [SerializeField] private Text winLevelText = null;
-    [SerializeField] private Text loseLevelText = null;
+    [SerializeField] private TextMeshProUGUI winLevelText = null;
+    [SerializeField] private TextMeshProUGUI loseLevelText = null;
     [SerializeField] private Text debugText = null;
 
     [Header("Settings")]
