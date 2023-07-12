@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &209377749 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9212884234918535974, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-  m_PrefabInstance: {fileID: 4986357266360583628}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &258482878
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +221,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1047947174 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8112496795626921065, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
+  m_PrefabInstance: {fileID: 4986357266360583628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1247782414
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +417,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -14.19, y: 54.2, z: 0}
+--- !u!1 &1526274961 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4986357266879418091, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
+  m_PrefabInstance: {fileID: 4986357266360583628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1526274968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526274961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e43693fa0234d40b77b3eb0b5e6fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smiley: {fileID: 1047947174}
+  scale: {x: 0.001, y: 0.001, z: 0.001}
 --- !u!1 &1593672200
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,11 +467,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1637949683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3245233962419008309, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-  m_PrefabInstance: {fileID: 4986357266360583628}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1910714327
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,20 +603,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3245233962419008309, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986357266040132224, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4986357266879418080, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-      propertyPath: JoyStick
-      value: 
-      objectReference: {fileID: 4986357266360583629}
-    - target: {fileID: 4986357266879418080, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-      propertyPath: debugText
-      value: 
-      objectReference: {fileID: 209377749}
-    - target: {fileID: 4986357266879418080, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-      propertyPath: AwesomeText
-      value: 
-      objectReference: {fileID: 878918125967298752, guid: 73c4d66fae96c481fb2a1044777a7c23, type: 3}
     - target: {fileID: 4986357266879418087, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -697,23 +697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6060339135603101508, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
+    - target: {fileID: 4986357267105953320, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7004794880214028078, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8525779021766575359, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-      propertyPath: finger
-      value: 
-      objectReference: {fileID: 1637949683}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
---- !u!1 &4986357266360583629 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6060339135603101508, guid: a28ad5dbbd7374cdbbc161f4ec9dd99c, type: 3}
-  m_PrefabInstance: {fileID: 4986357266360583628}
-  m_PrefabAsset: {fileID: 0}
