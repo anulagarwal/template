@@ -1,0 +1,216 @@
+
+girl_1.png
+size: 160,924
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+girl/body/belt
+  rotate: false
+  xy: 8, 94
+  size: 88, 67
+  orig: 88, 67
+  offset: 0, 0
+  index: -1
+girl/body/body
+  rotate: false
+  xy: 8, 693
+  size: 130, 113
+  orig: 130, 113
+  offset: 0, 0
+  index: -1
+girl/body/dress
+  rotate: true
+  xy: 8, 582
+  size: 103, 109
+  orig: 103, 110
+  offset: 0, 1
+  index: -1
+girl/head/face/left_eye
+  rotate: true
+  xy: 97, 26
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+girl/head/face/right_eye
+  rotate: true
+  xy: 97, 26
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+girl/head/face/left_eyebrow
+  rotate: false
+  xy: 121, 324
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+girl/head/face/nose
+  rotate: true
+  xy: 122, 528
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+girl/head/face/right_eyebrow
+  rotate: false
+  xy: 125, 673
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+girl/head/head/hair_bottom
+  rotate: true
+  xy: 8, 169
+  size: 159, 95
+  orig: 159, 95
+  offset: 0, 0
+  index: -1
+girl/head/head/hair_top
+  rotate: false
+  xy: 8, 8
+  size: 81, 78
+  orig: 81, 78
+  offset: 0, 0
+  index: -1
+girl/head/head/head
+  rotate: true
+  xy: 8, 814
+  size: 101, 140
+  orig: 101, 141
+  offset: 0, 0
+  index: -1
+girl/left_ hand/left_arm
+  rotate: false
+  xy: 104, 84
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+girl/left_ hand/left_hand
+  rotate: true
+  xy: 111, 125
+  size: 91, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+girl/left_ hand/left_shoulder
+  rotate: false
+  xy: 8, 541
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+girl/left_leg/left_foot
+  rotate: true
+  xy: 125, 615
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+girl/left_leg/left_hip
+  rotate: true
+  xy: 8, 336
+  size: 33, 105
+  orig: 33, 106
+  offset: 0, 1
+  index: -1
+girl/left_leg/left_leg
+  rotate: true
+  xy: 8, 500
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+girl/right_hand/right_arm
+  rotate: false
+  xy: 97, 43
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+girl/right_hand/right_hand
+  rotate: true
+  xy: 111, 224
+  size: 92, 33
+  orig: 106, 33
+  offset: 14, 0
+  index: -1
+girl/right_hand/right_shoulder
+  rotate: false
+  xy: 8, 459
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+girl/right_leg/right_foot
+  rotate: true
+  xy: 125, 557
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+girl/right_leg/right_hip
+  rotate: true
+  xy: 8, 418
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+girl/right_leg/right_leg
+  rotate: true
+  xy: 8, 377
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+mouthes/mouth_O
+  rotate: false
+  xy: 146, 762
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: true
+  xy: 122, 443
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: false
+  xy: 122, 509
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 122, 492
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: true
+  xy: 122, 344
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: true
+  xy: 146, 783
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: true
+  xy: 122, 394
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1

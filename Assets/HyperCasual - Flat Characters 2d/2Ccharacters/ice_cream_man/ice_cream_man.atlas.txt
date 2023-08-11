@@ -1,0 +1,202 @@
+
+ice_cream_man.png
+size: 492,208
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ice_cream_man/body/belt_cloth
+  rotate: false
+  xy: 261, 148
+  size: 93, 56
+  orig: 93, 56
+  offset: 0, 0
+  index: -1
+ice_cream_man/body/body
+  rotate: false
+  xy: 4, 50
+  size: 173, 154
+  orig: 173, 154
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/face/left_eye
+  rotate: true
+  xy: 425, 10
+  size: 8, 16
+  orig: 8, 16
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/face/left_eyebrow
+  rotate: false
+  xy: 400, 6
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/face/mustache
+  rotate: false
+  xy: 408, 51
+  size: 60, 19
+  orig: 60, 19
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/face/nose
+  rotate: false
+  xy: 468, 177
+  size: 20, 27
+  orig: 20, 27
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/face/right_eye
+  rotate: true
+  xy: 472, 61
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/face/right_eyebrow
+  rotate: true
+  xy: 352, 6
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+ice_cream_man/head/head
+  rotate: false
+  xy: 181, 59
+  size: 76, 145
+  orig: 76, 145
+  offset: 0, 0
+  index: -1
+ice_cream_man/left_ hand/left_arm
+  rotate: false
+  xy: 142, 13
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+ice_cream_man/left_ hand/left_hand
+  rotate: true
+  xy: 408, 74
+  size: 89, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ice_cream_man/left_ hand/left_shoulder
+  rotate: false
+  xy: 261, 111
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ice_cream_man/left_leg/left_foot
+  rotate: false
+  xy: 244, 8
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+ice_cream_man/left_leg/left_hip
+  rotate: true
+  xy: 261, 74
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+ice_cream_man/left_leg/left_leg
+  rotate: true
+  xy: 4, 9
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+ice_cream_man/right_hand/right_arm
+  rotate: false
+  xy: 193, 22
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+ice_cream_man/right_hand/right_hand
+  rotate: true
+  xy: 445, 74
+  size: 89, 33
+  orig: 106, 33
+  offset: 17, 0
+  index: -1
+ice_cream_man/right_hand/right_shoulder
+  rotate: false
+  xy: 261, 37
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ice_cream_man/right_leg/right_foot
+  rotate: false
+  xy: 298, 8
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+ice_cream_man/right_leg/right_hip
+  rotate: false
+  xy: 371, 57
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+ice_cream_man/right_leg/right_leg
+  rotate: true
+  xy: 358, 167
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+mouthes/mouth_O
+  rotate: false
+  xy: 482, 133
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: true
+  xy: 371, 12
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: true
+  xy: 445, 19
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: true
+  xy: 460, 19
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: true
+  xy: 114, 4
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: true
+  xy: 482, 150
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 400, 22
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,209 @@
+
+walkiria.png
+size: 240,524
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mouthes/mouth_O
+  rotate: false
+  xy: 226, 218
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: false
+  xy: 98, 4
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: true
+  xy: 188, 4
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: true
+  xy: 203, 4
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 174, 36
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: true
+  xy: 220, 37
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 143, 4
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+walkiria/body/belt
+  rotate: false
+  xy: 4, 51
+  size: 88, 67
+  orig: 88, 67
+  offset: 0, 0
+  index: -1
+walkiria/body/body
+  rotate: true
+  xy: 120, 388
+  size: 132, 113
+  orig: 132, 113
+  offset: 0, 0
+  index: -1
+walkiria/body/dress
+  rotate: false
+  xy: 4, 122
+  size: 103, 91
+  orig: 103, 91
+  offset: 0, 0
+  index: -1
+walkiria/hair
+  rotate: false
+  xy: 4, 372
+  size: 112, 148
+  orig: 112, 148
+  offset: 0, 0
+  index: -1
+walkiria/head/face/left_eye
+  rotate: false
+  xy: 221, 120
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+walkiria/head/face/right_eye
+  rotate: false
+  xy: 221, 120
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+walkiria/head/face/left_eyebrow
+  rotate: true
+  xy: 221, 140
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+walkiria/head/face/nose
+  rotate: false
+  xy: 149, 38
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+walkiria/head/face/right_eyebrow
+  rotate: true
+  xy: 221, 165
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+walkiria/head/head
+  rotate: false
+  xy: 4, 217
+  size: 108, 151
+  orig: 108, 151
+  offset: 0, 0
+  index: -1
+walkiria/left_ hand/left_arm
+  rotate: true
+  xy: 190, 64
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+walkiria/left_ hand/left_hand
+  rotate: false
+  xy: 4, 6
+  size: 90, 41
+  orig: 106, 41
+  offset: 0, 0
+  index: -1
+walkiria/left_ hand/left_shoulder
+  rotate: false
+  xy: 120, 343
+  size: 110, 41
+  orig: 124, 41
+  offset: 14, 0
+  index: -1
+walkiria/left_leg/left_foot
+  rotate: true
+  xy: 206, 289
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+walkiria/left_leg/left_hip
+  rotate: true
+  xy: 116, 196
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+walkiria/left_leg/left_leg
+  rotate: false
+  xy: 116, 233
+  size: 41, 106
+  orig: 41, 106
+  offset: 0, 0
+  index: -1
+walkiria/right_hand/right_arm
+  rotate: false
+  xy: 98, 33
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+walkiria/right_hand/right_hand
+  rotate: false
+  xy: 96, 70
+  size: 90, 41
+  orig: 106, 41
+  offset: 16, 0
+  index: -1
+walkiria/right_hand/right_shoulder
+  rotate: false
+  xy: 111, 152
+  size: 106, 40
+  orig: 106, 40
+  offset: 0, 0
+  index: -1
+walkiria/right_leg/right_foot
+  rotate: true
+  xy: 206, 235
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+walkiria/right_leg/right_hip
+  rotate: true
+  xy: 111, 115
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+walkiria/right_leg/right_leg
+  rotate: false
+  xy: 161, 233
+  size: 41, 106
+  orig: 41, 106
+  offset: 0, 0
+  index: -1

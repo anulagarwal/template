@@ -1,0 +1,139 @@
+
+ninja.png
+size: 204,412
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ninja/body/belt_cloth
+  rotate: true
+  xy: 4, 23
+  size: 33, 86
+  orig: 33, 86
+  offset: 0, 0
+  index: -1
+ninja/body/body
+  rotate: true
+  xy: 4, 288
+  size: 117, 159
+  orig: 120, 159
+  offset: 0, 0
+  index: -1
+ninja/body/left_cloth
+  rotate: true
+  xy: 94, 33
+  size: 18, 56
+  orig: 18, 56
+  offset: 0, 0
+  index: -1
+ninja/body/right_cloth
+  rotate: true
+  xy: 102, 55
+  size: 45, 56
+  orig: 45, 56
+  offset: 0, 0
+  index: -1
+ninja/head/face/left_eye
+  rotate: false
+  xy: 114, 188
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+ninja/head/face/right_eye
+  rotate: false
+  xy: 114, 188
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+ninja/head/head
+  rotate: true
+  xy: 4, 208
+  size: 76, 122
+  orig: 76, 122
+  offset: 0, 0
+  index: -1
+ninja/left_ hand/left_arm
+  rotate: false
+  xy: 114, 141
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+ninja/left_ hand/left_hand
+  rotate: false
+  xy: 4, 97
+  size: 94, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ninja/left_ hand/left_shoulder
+  rotate: true
+  xy: 167, 299
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ninja/left_leg/left_foot
+  rotate: true
+  xy: 162, 25
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+ninja/left_leg/left_hip
+  rotate: false
+  xy: 167, 189
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+ninja/left_leg/left_leg
+  rotate: false
+  xy: 130, 178
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+ninja/right_hand/right_arm
+  rotate: false
+  xy: 114, 104
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+ninja/right_hand/right_hand
+  rotate: false
+  xy: 4, 60
+  size: 93, 33
+  orig: 106, 33
+  offset: 13, 0
+  index: -1
+ninja/right_hand/right_shoulder
+  rotate: true
+  xy: 167, 79
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ninja/right_leg/right_foot
+  rotate: false
+  xy: 94, 4
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+ninja/right_leg/right_hip
+  rotate: true
+  xy: 4, 171
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+ninja/right_leg/right_leg
+  rotate: true
+  xy: 4, 134
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,202 @@
+
+girl_2.png
+size: 668,144
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+girl_ghot/body/belt
+  rotate: false
+  xy: 575, 73
+  size: 88, 67
+  orig: 88, 67
+  offset: 0, 0
+  index: -1
+girl_ghot/body/body
+  rotate: true
+  xy: 95, 10
+  size: 130, 103
+  orig: 130, 103
+  offset: 0, 0
+  index: -1
+girl_ghot/hair
+  rotate: true
+  xy: 202, 14
+  size: 126, 73
+  orig: 126, 73
+  offset: 0, 0
+  index: -1
+girl_ghot/head/face/left_eye
+  rotate: true
+  xy: 565, 38
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+girl_ghot/head/face/right_eye
+  rotate: true
+  xy: 565, 38
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+girl_ghot/head/face/left_eyebrow
+  rotate: false
+  xy: 575, 57
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+girl_ghot/head/face/nose
+  rotate: true
+  xy: 523, 9
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+girl_ghot/head/face/right_eyebrow
+  rotate: true
+  xy: 555, 5
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+girl_ghot/head/head
+  rotate: false
+  xy: 4, 7
+  size: 87, 133
+  orig: 87, 133
+  offset: 0, 0
+  index: -1
+girl_ghot/left_ hand/left_arm
+  rotate: true
+  xy: 585, 6
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+girl_ghot/left_ hand/left_hand
+  rotate: true
+  xy: 501, 49
+  size: 91, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+girl_ghot/left_ hand/left_shoulder
+  rotate: true
+  xy: 279, 34
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+girl_ghot/left_leg/left_foot
+  rotate: false
+  xy: 279, 5
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+girl_ghot/left_leg/left_hip
+  rotate: false
+  xy: 316, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+girl_ghot/left_leg/left_leg
+  rotate: false
+  xy: 353, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+girl_ghot/right_hand/right_arm
+  rotate: true
+  xy: 622, 22
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+girl_ghot/right_hand/right_hand
+  rotate: true
+  xy: 538, 51
+  size: 89, 33
+  orig: 106, 33
+  offset: 17, 0
+  index: -1
+girl_ghot/right_hand/right_shoulder
+  rotate: true
+  xy: 390, 34
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+girl_ghot/right_leg/right_foot
+  rotate: false
+  xy: 333, 5
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+girl_ghot/right_leg/right_hip
+  rotate: false
+  xy: 427, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+girl_ghot/right_leg/right_leg
+  rotate: false
+  xy: 464, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+mouthes/mouth_O
+  rotate: true
+  xy: 229, 4
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: false
+  xy: 387, 5
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: false
+  xy: 501, 34
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 533, 36
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 477, 6
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: false
+  xy: 202, 4
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 432, 5
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1

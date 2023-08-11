@@ -1,0 +1,195 @@
+
+ronin.png
+size: 748,144
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mouthes/mouth_O
+  rotate: true
+  xy: 294, 9
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: false
+  xy: 435, 5
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: false
+  xy: 163, 4
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 195, 6
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 525, 6
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: false
+  xy: 267, 9
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 480, 5
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+ronin/body/belt
+  rotate: true
+  xy: 571, 45
+  size: 95, 67
+  orig: 95, 67
+  offset: 0, 0
+  index: -1
+ronin/body/belt_cloth
+  rotate: true
+  xy: 571, 5
+  size: 36, 71
+  orig: 36, 71
+  offset: 0, 0
+  index: -1
+ronin/body/body
+  rotate: false
+  xy: 163, 19
+  size: 160, 121
+  orig: 160, 121
+  offset: 0, 0
+  index: -1
+ronin/body/buckle
+  rotate: false
+  xy: 716, 54
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+ronin/head/face/left_eye
+  rotate: false
+  xy: 248, 7
+  size: 15, 8
+  orig: 15, 8
+  offset: 0, 0
+  index: -1
+ronin/head/face/nose
+  rotate: true
+  xy: 716, 82
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+ronin/head/face/right_eye
+  rotate: false
+  xy: 227, 7
+  size: 17, 8
+  orig: 17, 8
+  offset: 0, 0
+  index: -1
+ronin/head/head
+  rotate: true
+  xy: 4, 12
+  size: 128, 155
+  orig: 128, 155
+  offset: 0, 0
+  index: -1
+ronin/left_ hand/left_arm
+  rotate: false
+  xy: 679, 107
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+ronin/left_ hand/left_hand
+  rotate: false
+  xy: 646, 8
+  size: 92, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+ronin/left_ hand/left_shoulder
+  rotate: true
+  xy: 457, 34
+  size: 106, 36
+  orig: 106, 36
+  offset: 0, 0
+  index: -1
+ronin/left_leg/left_foot
+  rotate: false
+  xy: 327, 5
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+ronin/left_leg/left_hip
+  rotate: false
+  xy: 371, 34
+  size: 39, 106
+  orig: 39, 106
+  offset: 0, 0
+  index: -1
+ronin/left_leg/left_leg
+  rotate: false
+  xy: 497, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+ronin/right_hand/right_arm
+  rotate: true
+  xy: 679, 56
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+ronin/right_hand/right_hand
+  rotate: true
+  xy: 642, 45
+  size: 95, 33
+  orig: 106, 33
+  offset: 11, 0
+  index: -1
+ronin/right_hand/right_shoulder
+  rotate: true
+  xy: 414, 34
+  size: 106, 39
+  orig: 106, 39
+  offset: 0, 0
+  index: -1
+ronin/right_leg/right_foot
+  rotate: false
+  xy: 381, 5
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+ronin/right_leg/right_hip
+  rotate: false
+  xy: 327, 34
+  size: 40, 106
+  orig: 40, 106
+  offset: 0, 0
+  index: -1
+ronin/right_leg/right_leg
+  rotate: false
+  xy: 534, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1

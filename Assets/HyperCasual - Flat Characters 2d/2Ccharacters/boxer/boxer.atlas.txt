@@ -1,0 +1,195 @@
+
+boxer.png
+size: 360,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+boxer/body/belt
+  rotate: true
+  xy: 4, 18
+  size: 88, 67
+  orig: 88, 67
+  offset: 0, 0
+  index: -1
+boxer/body/body
+  rotate: true
+  xy: 4, 110
+  size: 158, 118
+  orig: 160, 120
+  offset: 1, 1
+  index: -1
+boxer/head/face/left_eye
+  rotate: true
+  xy: 36, 5
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+boxer/head/face/right_eye
+  rotate: true
+  xy: 36, 5
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+boxer/head/face/left_eyebrow
+  rotate: true
+  xy: 83, 4
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+boxer/head/face/nose
+  rotate: true
+  xy: 99, 7
+  size: 18, 25
+  orig: 20, 27
+  offset: 1, 1
+  index: -1
+boxer/head/face/right_eyebrow
+  rotate: false
+  xy: 138, 13
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+boxer/head/head
+  rotate: false
+  xy: 126, 146
+  size: 112, 122
+  orig: 112, 122
+  offset: 0, 0
+  index: -1
+boxer/left_ hand/left_arm
+  rotate: false
+  xy: 75, 29
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
+boxer/left_ hand/left_hand
+  rotate: false
+  xy: 126, 111
+  size: 104, 31
+  orig: 106, 33
+  offset: 1, 1
+  index: -1
+boxer/left_ hand/left_shoulder
+  rotate: false
+  xy: 126, 111
+  size: 104, 31
+  orig: 106, 33
+  offset: 1, 1
+  index: -1
+boxer/left_leg/left_foot
+  rotate: true
+  xy: 330, 174
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+boxer/left_leg/left_hip
+  rotate: true
+  xy: 249, 228
+  size: 40, 107
+  orig: 40, 107
+  offset: 0, 0
+  index: -1
+boxer/left_leg/left_leg
+  rotate: false
+  xy: 237, 4
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+boxer/right_hand/right_arm
+  rotate: false
+  xy: 156, 30
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
+boxer/right_hand/right_hand
+  rotate: true
+  xy: 274, 7
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+boxer/right_hand/right_shoulder
+  rotate: true
+  xy: 274, 7
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+boxer/right_leg/right_foot
+  rotate: true
+  xy: 330, 120
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+boxer/right_leg/right_hip
+  rotate: false
+  xy: 249, 117
+  size: 40, 107
+  orig: 40, 107
+  offset: 0, 0
+  index: -1
+boxer/right_leg/right_leg
+  rotate: false
+  xy: 293, 118
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+mouthes/mouth_O
+  rotate: false
+  xy: 128, 12
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: true
+  xy: 330, 75
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: true
+  xy: 234, 114
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 4, 5
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 311, 47
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: false
+  xy: 56, 8
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 311, 18
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1

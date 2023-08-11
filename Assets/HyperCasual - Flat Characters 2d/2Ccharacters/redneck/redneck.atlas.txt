@@ -1,0 +1,188 @@
+
+redneck.png
+size: 460,208
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mouthes/mouth_O
+  rotate: true
+  xy: 365, 6
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: false
+  xy: 369, 32
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: false
+  xy: 181, 54
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 224, 5
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 261, 4
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: false
+  xy: 338, 6
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: true
+  xy: 420, 64
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+redneck/body/body
+  rotate: false
+  xy: 4, 50
+  size: 173, 154
+  orig: 173, 154
+  offset: 0, 0
+  index: -1
+redneck/head/face/left_eye
+  rotate: false
+  xy: 414, 46
+  size: 9, 14
+  orig: 9, 14
+  offset: 0, 0
+  index: -1
+redneck/head/face/left_eyebrow
+  rotate: false
+  xy: 369, 16
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+redneck/head/face/nose
+  rotate: true
+  xy: 307, 4
+  size: 24, 27
+  orig: 24, 27
+  offset: 0, 0
+  index: -1
+redneck/head/face/right_eye
+  rotate: true
+  xy: 394, 19
+  size: 9, 15
+  orig: 9, 15
+  offset: 0, 0
+  index: -1
+redneck/head/face/right_eyebrow
+  rotate: false
+  xy: 338, 16
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+redneck/head/head
+  rotate: false
+  xy: 181, 69
+  size: 81, 135
+  orig: 81, 135
+  offset: 0, 0
+  index: -1
+redneck/left_ hand/left_arm
+  rotate: false
+  xy: 362, 61
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+redneck/left_ hand/left_hand
+  rotate: true
+  xy: 420, 109
+  size: 95, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+redneck/left_ hand/left_shoulder
+  rotate: false
+  xy: 4, 4
+  size: 106, 42
+  orig: 106, 42
+  offset: 0, 0
+  index: -1
+redneck/left_leg/left_foot
+  rotate: false
+  xy: 261, 32
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+redneck/left_leg/left_hip
+  rotate: false
+  xy: 346, 98
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+redneck/left_leg/left_leg
+  rotate: false
+  xy: 266, 98
+  size: 36, 106
+  orig: 36, 106
+  offset: 0, 0
+  index: -1
+redneck/right_hand/right_arm
+  rotate: true
+  xy: 224, 18
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+redneck/right_hand/right_hand
+  rotate: false
+  xy: 266, 61
+  size: 92, 33
+  orig: 106, 33
+  offset: 14, 0
+  index: -1
+redneck/right_hand/right_shoulder
+  rotate: false
+  xy: 114, 4
+  size: 106, 42
+  orig: 106, 42
+  offset: 0, 0
+  index: -1
+redneck/right_leg/right_foot
+  rotate: false
+  xy: 315, 32
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+redneck/right_leg/right_hip
+  rotate: false
+  xy: 383, 98
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+redneck/right_leg/right_leg
+  rotate: false
+  xy: 306, 98
+  size: 36, 106
+  orig: 36, 106
+  offset: 0, 0
+  index: -1

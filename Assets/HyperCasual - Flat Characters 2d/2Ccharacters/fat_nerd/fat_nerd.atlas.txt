@@ -1,0 +1,188 @@
+
+fat_nerd.png
+size: 360,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fat_nerd/body/body
+  rotate: false
+  xy: 4, 114
+  size: 173, 154
+  orig: 173, 154
+  offset: 0, 0
+  index: -1
+fat_nerd/head/face/left_eye
+  rotate: false
+  xy: 306, 16
+  size: 11, 11
+  orig: 11, 11
+  offset: 0, 0
+  index: -1
+fat_nerd/head/face/right_eye
+  rotate: false
+  xy: 306, 16
+  size: 11, 11
+  orig: 11, 11
+  offset: 0, 0
+  index: -1
+fat_nerd/head/face/left_eyebrow
+  rotate: false
+  xy: 331, 45
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+fat_nerd/head/face/nose
+  rotate: true
+  xy: 265, 10
+  size: 20, 27
+  orig: 20, 27
+  offset: 0, 0
+  index: -1
+fat_nerd/head/face/right_eyebrow
+  rotate: true
+  xy: 342, 241
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+fat_nerd/head/head
+  rotate: true
+  xy: 4, 12
+  size: 98, 137
+  orig: 98, 137
+  offset: 0, 0
+  index: -1
+fat_nerd/left_ hand/left_arm
+  rotate: false
+  xy: 291, 235
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+fat_nerd/left_ hand/left_hand
+  rotate: true
+  xy: 263, 130
+  size: 92, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+fat_nerd/left_ hand/left_shoulder
+  rotate: true
+  xy: 145, 4
+  size: 106, 42
+  orig: 106, 42
+  offset: 0, 0
+  index: -1
+fat_nerd/left_leg/left_foot
+  rotate: true
+  xy: 300, 130
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+fat_nerd/left_leg/left_hip
+  rotate: false
+  xy: 191, 6
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+fat_nerd/left_leg/left_leg
+  rotate: false
+  xy: 181, 116
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+fat_nerd/right_hand/right_arm
+  rotate: true
+  xy: 300, 184
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+fat_nerd/right_hand/right_hand
+  rotate: true
+  xy: 265, 34
+  size: 92, 33
+  orig: 106, 33
+  offset: 14, 0
+  index: -1
+fat_nerd/right_hand/right_shoulder
+  rotate: false
+  xy: 181, 226
+  size: 106, 42
+  orig: 106, 42
+  offset: 0, 0
+  index: -1
+fat_nerd/right_leg/right_foot
+  rotate: true
+  xy: 302, 76
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+fat_nerd/right_leg/right_hip
+  rotate: false
+  xy: 228, 6
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+fat_nerd/right_leg/right_leg
+  rotate: false
+  xy: 222, 116
+  size: 37, 106
+  orig: 37, 106
+  offset: 0, 0
+  index: -1
+mouthes/mouth_O
+  rotate: true
+  xy: 331, 35
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: true
+  xy: 302, 31
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: true
+  xy: 331, 61
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: true
+  xy: 346, 61
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: true
+  xy: 329, 138
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: true
+  xy: 296, 4
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: true
+  xy: 331, 93
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1

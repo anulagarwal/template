@@ -1,0 +1,195 @@
+
+thief.png
+size: 628,144
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mouthes/mouth_O
+  rotate: true
+  xy: 171, 10
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: false
+  xy: 353, 5
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: false
+  xy: 139, 5
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 4, 5
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 443, 6
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: false
+  xy: 56, 8
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 398, 5
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+thief/body/belt
+  rotate: true
+  xy: 504, 52
+  size: 88, 67
+  orig: 88, 67
+  offset: 0, 0
+  index: -1
+thief/body/body
+  rotate: false
+  xy: 81, 20
+  size: 160, 120
+  orig: 160, 120
+  offset: 0, 0
+  index: -1
+thief/head/face/left_eye
+  rotate: true
+  xy: 36, 5
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+thief/head/face/right_eye
+  rotate: true
+  xy: 36, 5
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+thief/head/face/left_eyebrow
+  rotate: false
+  xy: 114, 4
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+thief/head/face/nose
+  rotate: true
+  xy: 586, 31
+  size: 21, 28
+  orig: 21, 28
+  offset: 0, 0
+  index: -1
+thief/head/face/right_eyebrow
+  rotate: false
+  xy: 83, 4
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+thief/head/head
+  rotate: false
+  xy: 4, 18
+  size: 73, 122
+  orig: 73, 122
+  offset: 0, 0
+  index: -1
+thief/left_ hand/left_arm
+  rotate: false
+  xy: 575, 107
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+thief/left_ hand/left_hand
+  rotate: true
+  xy: 467, 47
+  size: 93, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+thief/left_ hand/left_shoulder
+  rotate: true
+  xy: 245, 34
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+thief/left_leg/left_foot
+  rotate: false
+  xy: 245, 5
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+thief/left_leg/left_hip
+  rotate: false
+  xy: 282, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+thief/left_leg/left_leg
+  rotate: false
+  xy: 319, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+thief/right_hand/right_arm
+  rotate: true
+  xy: 575, 56
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+thief/right_hand/right_hand
+  rotate: false
+  xy: 489, 10
+  size: 93, 33
+  orig: 106, 33
+  offset: 13, 0
+  index: -1
+thief/right_hand/right_shoulder
+  rotate: true
+  xy: 356, 34
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+thief/right_leg/right_foot
+  rotate: false
+  xy: 299, 5
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+thief/right_leg/right_hip
+  rotate: false
+  xy: 393, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+thief/right_leg/right_leg
+  rotate: false
+  xy: 430, 34
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1

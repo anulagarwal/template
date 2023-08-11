@@ -1,0 +1,188 @@
+
+punk.png
+size: 380,272
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+mouthes/mouth_O
+  rotate: true
+  xy: 187, 8
+  size: 6, 13
+  orig: 6, 13
+  offset: 0, 0
+  index: -1
+mouthes/mouth_angree
+  rotate: false
+  xy: 244, 21
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+mouthes/mouth_happy
+  rotate: false
+  xy: 115, 8
+  size: 28, 11
+  orig: 28, 11
+  offset: 0, 0
+  index: -1
+mouthes/mouth_sad
+  rotate: false
+  xy: 151, 10
+  size: 28, 9
+  orig: 28, 9
+  offset: 0, 0
+  index: -1
+mouthes/mouth_screem
+  rotate: false
+  xy: 194, 22
+  size: 42, 24
+  orig: 42, 24
+  offset: 0, 0
+  index: -1
+mouthes/mouth_smile
+  rotate: false
+  xy: 308, 81
+  size: 23, 6
+  orig: 23, 6
+  offset: 0, 0
+  index: -1
+mouthes/mouth_very_happy
+  rotate: false
+  xy: 66, 9
+  size: 41, 25
+  orig: 41, 25
+  offset: 0, 0
+  index: -1
+punk/body/body
+  rotate: false
+  xy: 8, 105
+  size: 117, 159
+  orig: 117, 159
+  offset: 0, 0
+  index: -1
+punk/head/face/left_eye
+  rotate: true
+  xy: 115, 30
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+punk/head/face/right_eye
+  rotate: true
+  xy: 115, 30
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+punk/head/face/left_eyebrow
+  rotate: false
+  xy: 310, 214
+  size: 21, 12
+  orig: 21, 12
+  offset: 0, 0
+  index: -1
+punk/head/face/nose
+  rotate: false
+  xy: 310, 234
+  size: 21, 30
+  orig: 21, 30
+  offset: 0, 0
+  index: -1
+punk/head/face/right_eyebrow
+  rotate: true
+  xy: 293, 19
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+punk/head/head
+  rotate: false
+  xy: 133, 109
+  size: 73, 155
+  orig: 73, 155
+  offset: 0, 0
+  index: -1
+punk/left_ hand/left_arm
+  rotate: false
+  xy: 139, 68
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+punk/left_ hand/left_hand
+  rotate: false
+  xy: 8, 42
+  size: 90, 55
+  orig: 106, 55
+  offset: 0, 0
+  index: -1
+punk/left_ hand/left_shoulder
+  rotate: true
+  xy: 298, 95
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+punk/left_leg/left_foot
+  rotate: false
+  xy: 8, 9
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+punk/left_leg/left_hip
+  rotate: false
+  xy: 339, 158
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+punk/left_leg/left_leg
+  rotate: false
+  xy: 214, 95
+  size: 34, 106
+  orig: 34, 106
+  offset: 0, 0
+  index: -1
+punk/right_hand/right_arm
+  rotate: false
+  xy: 139, 27
+  size: 47, 33
+  orig: 47, 33
+  offset: 0, 0
+  index: -1
+punk/right_hand/right_hand
+  rotate: false
+  xy: 214, 209
+  size: 88, 55
+  orig: 106, 55
+  offset: 18, 0
+  index: -1
+punk/right_hand/right_shoulder
+  rotate: true
+  xy: 339, 44
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+punk/right_leg/right_foot
+  rotate: true
+  xy: 106, 47
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+punk/right_leg/right_hip
+  rotate: true
+  xy: 194, 54
+  size: 33, 106
+  orig: 33, 106
+  offset: 0, 0
+  index: -1
+punk/right_leg/right_leg
+  rotate: false
+  xy: 256, 95
+  size: 34, 106
+  orig: 34, 106
+  offset: 0, 0
+  index: -1
