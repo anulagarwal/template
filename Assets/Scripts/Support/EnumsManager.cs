@@ -21,6 +21,25 @@ public enum GameState
     Lose
 }
 
+public enum DiscColor
+{
+    Red,
+    Blue,
+    Green,
+    Yellow,
+    Black,
+    Purple,
+    Orange,
+    Pink,
+    NULL
+}
+
+public enum LockType
+{
+    Lock,
+    Barrel
+}
+
 public enum BallType
 {
     Red,

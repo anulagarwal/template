@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: 45414d3a03e97784a887a4d5922c9bba
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 3715997811488543755
+    second: Pikachu_Plush|AlienKang.003Action
+  - first:
+      74: -1600585100294021677
+    second: Pikachu_Plush|AlienKang.003Action.001
+  - first:
+      74: -8266888296815933962
+    second: Pikachu_Plush|Armature.011Action
+  - first:
+      74: -5718476393496983282
+    second: Pikachu_Plush|Armature.011Action.001
+  - first:
+      74: -8059263720291236217
+    second: Pikachu_Plush|Armature.011Action.002
+  - first:
+      74: 2710185714326258085
+    second: Pikachu_Plush|Armature.011Action.003
+  - first:
+      74: -2164924917387961015
+    second: Pikachu_Plush|Armature.011Action.004
+  - first:
+      74: 8438311726351692461
+    second: Pikachu_Plush|Armature.011Action.005
+  - first:
+      74: -8421278646912618429
+    second: Pikachu_Plush|Armature.011Action.006
+  - first:
+      74: 4472252124814927847
+    second: Pikachu_Plush|Armature.012Action
+  - first:
+      74: 273484902295583177
+    second: Pikachu_Plush|BatSquid.001Action
+  - first:
+      74: 3699291588461327420
+    second: Pikachu_Plush|CubeAction
+  - first:
+      74: 3333932103386476215
+    second: Pikachu_Plush|CubeAction.001
+  - first:
+      74: -5046770658215390638
+    second: Pikachu_Plush|CubeAction.002
+  - first:
+      74: -1411612884841663843
+    second: Pikachu_Plush|CubeAction.003
+  - first:
+      74: 5166405560058022096
+    second: Pikachu_Plush|CubeAction.004
+  - first:
+      74: -6198633527420483337
+    second: Pikachu_Plush|CubeAction.005
+  - first:
+      74: 3663710439391786519
+    second: Pikachu_Plush|CubeAction.006
+  - first:
+      74: -8389346795146491673
+    second: Pikachu_Plush|CubeAction.007
+  - first:
+      74: 8163066102236052946
+    second: Pikachu_Plush|Mushroom.001Action
+  - first:
+      74: -6697496226426564218
+    second: Pikachu_Plush|Olaf.001Action
+  - first:
+      74: -7530247645101171132
+    second: Pikachu_Plush|Olaf.001Action.001
+  - first:
+      74: -6788488249130395141
+    second: Pikachu_Plush|Olaf.001Action.002
+  - first:
+      74: -9053417105084385897
+    second: Pikachu_Plush|Olaf.001Action.003
+  - first:
+      74: 5386262171510486652
+    second: Pikachu_Plush|Olaf.001Action.004
+  - first:
+      74: 2204347989287153548
+    second: Pikachu_Plush|Pikachu.001Action
+  - first:
+      74: -327016688739977359
+    second: Pikachu_Plush|Pikachu.001Action.001
+  - first:
+      74: -7252832788970708785
+    second: Pikachu_Plush|Sonic.001Action
+  - first:
+      74: 6289881558371848589
+    second: Pikachu_Plush|Wolverine.001Action
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,8 +12,10 @@ public class SoundManager : MonoBehaviour
     }
     public enum SoundType
     {
-        Example1,
+        Pop,
         Example2,
+        Error,
+        Victory
         // Add more sound types here
     }
 
@@ -52,6 +54,18 @@ public class SoundManager : MonoBehaviour
             AudioClip clipToPlay = sounds.Find(x => x.type == type).soundClip;
             AudioSource availableSource = GetAvailableAudioSource();
             availableSource.clip = clipToPlay;
+            availableSource.Play();
+        }
+    }
+
+    public void Play(SoundType type , float pitch)
+    {
+        if (PlayerPrefs.GetInt("sound", 1) == 1)
+        {
+            AudioClip clipToPlay = sounds.Find(x => x.type == type).soundClip;
+            AudioSource availableSource = GetAvailableAudioSource();
+            availableSource.clip = clipToPlay;
+            availableSource.pitch = pitch;
             availableSource.Play();
         }
     }

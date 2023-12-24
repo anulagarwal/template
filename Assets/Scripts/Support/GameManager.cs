@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numberOfMoves;
     [SerializeField] private float levelLength;
 
+    [Header("Level Management")]
+    [SerializeField] public bool isChallengeLevel;
+    [SerializeField] public int maxMoves;
+
     public int CurrentScore => currentScore;
     public int CurrentLevel => currentLevel;
     public GameState CurrentState => currentState;
@@ -61,6 +65,10 @@ public class GameManager : MonoBehaviour
         currentLevel = PlayerPrefs.GetInt("level", 1);
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
+
+        
+       
+        StartLevel();
     }
     #endregion
 
@@ -69,14 +77,45 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);
         currentState = GameState.InGame;
-        Analytics.Instance.StartLevel(currentLevel);
+
+        if (isChallengeLevel)
+        {
+            UIManager.Instance.EnableMove();
+            UIManager.Instance.UpdateMoveCount("MOVES: " +maxMoves);
+
+        }
+        else
+        {
+            UIManager.Instance.DisableMove();
+        }
         levelStartTime = Time.time;
+
     }
 
     public void AddMove(int v)
     {
         numberOfMoves += v;
+        if (isChallengeLevel)
+        {
+            UIManager.Instance.UpdateMoveCount("Moves: " + (maxMoves - numberOfMoves));
+            if (numberOfMoves >= maxMoves && currentState == GameState.InGame)
+            {
+                GameManager.Instance.LoseLevel();
+            }
+        }
     }
+
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void UnPauseGame()
+    {
+        Time.timeScale = 1f;
+    }
+
 
     public void WinLevel()
     {
@@ -94,19 +133,8 @@ public class GameManager : MonoBehaviour
             {
                 m.enabled = false;
             }
-            levelLength = Time.time - levelStartTime;
-            PlayerLevelData pld = new PlayerLevelData();
-            pld.Init(currentLevel, 0, true, numberOfMoves, levelLength);
 
-            if (currentLevel == 5)
-            {
-                if (PlayerPrefs.GetInt("review", 0) == 0)
-                {
-                    GetComponent<ReviewsManager>().Request();
-                    PlayerPrefs.SetInt("review", 1);
-                }
-            }
-            PlayerManager.Instance.AddLevelData(pld);
+            SoundManager.Instance.Play(SoundManager.SoundType.Victory);
             //Send Data
             Analytics.Instance.WinLevel();
 
@@ -117,22 +145,29 @@ public class GameManager : MonoBehaviour
     {
         if (currentState == GameState.InGame)
         {
+            WinLevel();
+
+            return;
+
             Invoke("ShowLoseUI", 2f);
             currentState = GameState.Lose;
             foreach (MonoBehaviour m in objectsToDisable)
             {
                 m.enabled = false;
             }
-            levelLength = Time.time - levelStartTime;
-            PlayerLevelData pld = new PlayerLevelData();
-            pld.Init(currentLevel, 1, false, numberOfMoves, levelLength);
-            PlayerManager.Instance.AddLevelData(pld);
+           
             //Send Data
             Analytics.Instance.LoseLevel();
         }
     }
 
     public void ChangeLevel()
+    {
+        AdManager.Instance.ShowNormalAd(5);
+    }
+
+
+    public void DoChangeLevel()
     {
         SceneManager.LoadScene("Core");
     }

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 namespace Momo
 {
     
@@ -12,7 +10,10 @@ namespace Momo
         [SerializeField] int dayNumber;
         [SerializeField] int level;
         [SerializeField] float sessionTime;
-        int lastLevel; 
+        int lastLevel;
+
+
+
 
         bool isPaused;
         Dictionary<string, string> fields = new Dictionary<string, string>();
@@ -42,14 +43,10 @@ namespace Momo
 
         private void Start()
         {
-
             //Check if app opened on a new day - check when was last time opened
             //If opened on a new day, track day and level number
-
             appSessionCount = PlayerPrefs.GetInt("appSession", 0);
-            level = PlayerPrefs.GetInt("level", 1);
-          
-
+            level = PlayerPrefs.GetInt("level", 1);          
 
             dayNumber = PlayerPrefs.GetInt("dayNumber", 0);
         }
@@ -60,6 +57,7 @@ namespace Momo
         {
 
         }
+       
 
 
         #region App Level
@@ -91,40 +89,35 @@ namespace Momo
         public void StartLevel(int levelNumber)
         {
             level = levelNumber;
+           // GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level " + level);
         }
 
         public void WinLevel()
         {
+           // GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level " + level);
         }
 
         public void LoseLevel()
         {
+            //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level " + level);
         }
 
         public void TrackSession(SessionData sd)
         {
-            Dictionary<string, object> s = new Dictionary<string, object>();
-            s.Add("sessionNumber", sd.sessionNumber);
-            s.Add("sessionLength", sd.sessionLength);
-            s.Add("sessionLevel", sd.lastLevel);
+           
 
           
         }
 
         public void TrackLevel(PlayerLevelData ld)
         {
-            Dictionary<string, object> l = new Dictionary<string, object>();
-            l.Add("levelNumber", ld.levelNumber);
-            l.Add("moves", ld.numberOfMoves);
-            l.Add("time", ld.timeSpent);
+           
 
         }
 
         public void TrackDay(DayData dd)
         {
-            Dictionary<string, object> d = new Dictionary<string, object>();
-            d.Add("dayNumber", dd.DayNumber);
-            d.Add("numberOfSessions", dd.numberOfSessions);
+           
 
        
 

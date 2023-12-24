@@ -2,9 +2,9 @@
     "m_SelectedDeviceId": "4378a9c6",
     "m_SelectedPackage": {
         "deviceId": "4378a9c6",
-        "name": "com.momo.sandsort",
-        "processId": 32357,
-        "exited": false
+        "name": "com.momo.disc",
+        "processId": 13668,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -12,12 +12,30 @@
             "deviceId": "4378a9c6",
             "name": "com.android.launcher",
             "processId": 3505,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "4378a9c6",
             "name": "com.momo.sandsort",
             "processId": 32357,
+            "exited": true
+        },
+        {
+            "deviceId": "4378a9c6",
+            "name": "com.momo.disc",
+            "processId": 27349,
+            "exited": true
+        },
+        {
+            "deviceId": "4378a9c6",
+            "name": "com.momo.disc",
+            "processId": 13668,
+            "exited": true
+        },
+        {
+            "deviceId": "4378a9c6",
+            "name": "com.momo.disc",
+            "processId": 16243,
             "exited": false
         }
     ],

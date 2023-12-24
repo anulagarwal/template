@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Wall
   - CantDraw
+  - Hole
   layers:
   - Default
   - TransparentFX

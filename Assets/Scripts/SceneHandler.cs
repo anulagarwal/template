@@ -15,6 +15,10 @@ public class SceneHandler : MonoBehaviour
 
         if (currentLevel > maxLevels)
         {
+            if (PlayerPrefs.GetInt("loop", 0)==0)
+            {
+                PlayerPrefs.SetInt("loop", 1);
+            }
             int newId = currentLevel % maxLevels;
             if (newId == 0)
             {

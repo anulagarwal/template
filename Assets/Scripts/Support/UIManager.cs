@@ -41,9 +41,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverLoseUIPanel = null;
     [SerializeField] private TextMeshProUGUI scoreText = null;
     [SerializeField] private Text mainLevelText = null;
-    [SerializeField] private Text inGameLevelText = null;
+    [SerializeField] private TextMeshProUGUI inGameLevelText = null;
     [SerializeField] private TextMeshProUGUI winLevelText = null;
     [SerializeField] private TextMeshProUGUI loseLevelText = null;
+    [SerializeField] private TextMeshProUGUI comboText = null;
+    [SerializeField] private TextMeshProUGUI moveText = null;
+    [SerializeField] private TextMeshProUGUI discsText = null;
+
+    [SerializeField] private GameObject moveHolder = null;
+
+
+
     [SerializeField] private Text debugText = null;
 
     [Header("Settings")]
@@ -154,6 +162,28 @@ public class UIManager : MonoBehaviour
         loseLevelText.text = "LEVEL " + level;
     }
 
+    public void UpdateComboText(int v)
+    {
+        comboText.text = "COMBO x" + v;
+
+        comboText.gameObject.SetActive(true); // Activate the text
+        comboText.transform.localScale = Vector3.one; // Reset the scale
+
+        // Scale up-down "punch" using DOTween
+        comboText.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 1f, 3, 0.5f)
+.OnComplete(() =>
+        {
+        // Deactivate the text after 2 seconds
+        StartCoroutine(DeactivateTextAfterDelay(1f));
+        });
+
+    }
+
+    private IEnumerator DeactivateTextAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        comboText.gameObject.SetActive(false);
+    }
     public void UpdateCurrentCoins(int v)
     {
         foreach (Text t in allCurrentCoins)
@@ -162,9 +192,37 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void UpdateDiscs(int count)
+    {
+        discsText.text = count + " Left!";
+
+        discsText.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0.5f), 1f, 3, 0.5f).OnComplete(() =>
+        {
+            // Deactivate the text after 2 seconds
+            discsText.transform.localScale = Vector3.one;
+        });
+
+    
+}
+
     public void UpdateLevelReward(int v)
     {
         levelReward.text = "+" + v + "";
+    }
+
+    public void UpdateMoveCount(string s)
+    {
+        moveText.text = s;
+    }
+
+    public void EnableMove()
+    {
+        moveHolder.SetActive(true);
+    }
+
+    public void DisableMove()
+    {
+        moveHolder.SetActive(false);
     }
     #endregion
 

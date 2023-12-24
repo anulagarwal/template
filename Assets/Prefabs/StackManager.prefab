@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9207228055276136332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791623086361744658}
+  - component: {fileID: 8084621963221599130}
+  - component: {fileID: 934728194031184223}
+  m_Layer: 0
+  m_Name: StackManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &791623086361744658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207228055276136332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.59706277, y: 2.4065728, z: 9.369382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8084621963221599130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207228055276136332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296aa64b8a9c941c1a3b20c025bdced3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discObjects:
+  - disc: {fileID: 1207797289949938430, guid: 58fd8cd7652994daea2d76f83b825f9c, type: 3}
+    col: 0
+  - disc: {fileID: 1207797289949938430, guid: 80d56effc060744a48610d597d9690cb, type: 3}
+    col: 1
+  - disc: {fileID: 1207797289949938430, guid: 88ad55b8de1d7439ca2b75a7ef986cf4, type: 3}
+    col: 2
+  - disc: {fileID: 1207797289949938430, guid: e1c9edcdde39946649e290b7de64d4ba, type: 3}
+    col: 7
+  - disc: {fileID: 1207797289949938430, guid: d98711d423aeb4d868b84b08c282f1c0, type: 3}
+    col: 6
+  - disc: {fileID: 1207797289949938430, guid: d1d92e270836645d48195ab2894a5788, type: 3}
+    col: 3
+  yOffset: 0.3
+  yBaseOffset: 0.15
+  yRiseOffset: 0.1
+  stacks: []
+  discs: []
+  selectedDisc: {fileID: 0}
+  totalDiscs: 0
+--- !u!114 &934728194031184223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207228055276136332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e060bbaf73d1438882328028932150b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
